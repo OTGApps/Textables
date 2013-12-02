@@ -107,7 +107,8 @@ class PackageViewController < UICollectionViewController
     AddressBook.pick presenter:self do |person|
       if person
         # person is an AddressBook::Person object
-        ap "selected person"
+        ap "selected person:"
+        ap person
       end
     end
 
