@@ -1,0 +1,72 @@
+[
+  {
+    "category":"Faces",
+    "items": [
+      {
+        "name": "Bear",
+        "art": "ʕ•ᴥ•ʔ"
+      },
+      {
+        "name": "Disapproving Look",
+        "art": "ಠ_ಠ"
+      },
+      {
+        "name": "Glasses Smile",
+        "art": "ʘ‿ʘ"
+      }
+    ]
+  },
+  {
+    "category": "Table Flip",
+    "items": [
+      {
+        "name": "Classic",
+        "art": "(╯°□°）╯︵ ┻━┻"
+      },
+      {
+        "name": "Angry",
+        "art": "(ﾉಥ益ಥ）ﾉ﻿ ┻━┻"
+      },
+      {
+        "name": "One-Handed",
+        "art": "┬──┬﻿ ¯\\_(ツ)"
+      },
+      {
+        "name": "Double / Scream",
+        "art": "┻━┻ ︵ヽ(`Д´)ﾉ︵﻿ ┻━┻"
+      },
+      {
+        "name": "Indifferent",
+        "art": "┬─┬ノ( º _ ºノ)"
+      },
+      {
+        "name": "Angry",
+        "art": "(ノಠ益ಠ)ノ彡┻━┻"
+      },
+      {
+        "name": "Monacle",
+        "art": "(╯ಠ_ರೃ)╯︵ ┻━┻"
+      },
+      {
+        "name": "Person Flip",
+        "art": "(╯°□°）╯︵ /(.□. \\)"
+      },
+      {
+        "name": "Jake the Dog",
+        "art": "(┛❍ᴥ❍﻿)┛彡┻━┻"
+      },
+      {
+        "name": "Owl",
+        "art": "(ʘ∇ʘ)ク 彡 ┻━┻"
+      },
+      {
+        "name": "One-handed",
+        "art": "/(ò.ó)┛彡┻━┻"
+      },
+      {
+        "name": "Trippin'",
+        "art": "(┛◉Д◉)┛彡┻━┻"
+      }
+    ]
+  }
+]
