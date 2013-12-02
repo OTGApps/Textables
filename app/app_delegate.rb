@@ -1,5 +1,6 @@
 class AppDelegate < PM::Delegate
   status_bar true, animation: :none
+  tint_color "#00CC99".to_color
 
   def on_load(app, options)
     create_random_contacts if Device.simulator?

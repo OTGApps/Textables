@@ -3,7 +3,7 @@ class PackageViewController < UICollectionViewController
 
   HEADER_IDENTIFIER = "PackageHeader"
   CELL_IDENTIFIER = "Package Cell"
-  CELL_WIDTH = 150
+  CELL_WIDTH = 145
   CELL_HEIGHT = 75
 
   def viewDidLoad
@@ -11,15 +11,13 @@ class PackageViewController < UICollectionViewController
 
     self.collectionView.registerClass(PackageCell, forCellWithReuseIdentifier:CELL_IDENTIFIER)
     # Package Header Needs to be registered, too
-    self.collectionView.registerClass(PackageHeader,
-           forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                  withReuseIdentifier: HEADER_IDENTIFIER)
+    self.collectionView.registerClass(PackageHeader, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HEADER_IDENTIFIER)
     # THIS TRICKY PROPERTY MUST BE SET, OR DELEGATES AND ALL ARE IGNORED
     self.collectionView.collectionViewLayout.headerReferenceSize = CGSizeMake(10.0, 30.0)
     self.collectionView.collectionViewLayout.itemSize = CGSizeMake(CELL_WIDTH, CELL_HEIGHT)
 
-    self.collectionView.collectionViewLayout.sectionInset = UIEdgeInsetsMake(10, 0, 10, 0)
-    self.collectionView.backgroundColor = UIColor.redColor
+    self.collectionView.collectionViewLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10)
+    self.collectionView.backgroundColor = "#00CC99".to_color
 
     init_data
   end
@@ -27,6 +25,8 @@ class PackageViewController < UICollectionViewController
   def init_data
     data_location = File.join(App.resources_path, "content.json")
     self.data = BW::JSON.parse(File.read(data_location))
+
+    # self.data.unshift()
     self.collectionView.reloadData
   end
 
@@ -36,8 +36,20 @@ class PackageViewController < UICollectionViewController
 
   def collectionView(clv, cellForItemAtIndexPath:index_path)
     clv.dequeueReusableCellWithReuseIdentifier(CELL_IDENTIFIER, forIndexPath:index_path).tap do |cell|
-      cell.art_string = self.data[index_path.section]["items"][index_path.row]["art"] || ""
-      cell.title_string = self.data[index_path.section]["items"][index_path.row]["name"] || ""
+      art = ASCIIArt.new(
+        art: self.data[index_path.section]["items"][index_path.row]["art"] || "",
+        title: self.data[index_path.section]["items"][index_path.row]["name"] || ""
+      )
+      cell.art = art
+      cell.favorite = Favorites.is_favorite? cell.art
+      cell.backgroundColor = UIColor.colorWithRed(1.0, green:1.0, blue:1.0, alpha:0.8)
+
+      cell.when_pressed do |c|
+        if c.state == UIGestureRecognizerStateBegan
+          Favorites.toggle c.view.art
+          self.collectionView.reloadItemsAtIndexPaths [index_path]
+        end
+      end
     end
   end
 
@@ -111,7 +123,6 @@ class PackageViewController < UICollectionViewController
         ap person
       end
     end
-
   end
 
 end
