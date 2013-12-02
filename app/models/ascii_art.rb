@@ -1,16 +1,16 @@
 class ASCIIArt
 
-  attr_accessor :art, :title
+  attr_accessor :art, :name
 
   def initialize options={}
     self.art = options[:art]
-    self.title = options[:title]
+    self.name = options[:name]
   end
 
   def to_dict
     {
       art: self.art,
-      title: self.title
+      name: self.name
     }
   end
 

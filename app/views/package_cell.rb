@@ -7,7 +7,7 @@ class PackageCell < UICollectionViewCell
   def art= ascii_object
     @art = ascii_object
     @art_label.text = ascii_object.art
-    @title_label.text = ascii_object.title
+    @title_label.text = ascii_object.name
   end
 
   def art

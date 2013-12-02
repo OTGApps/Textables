@@ -26,8 +26,25 @@ class PackageViewController < UICollectionViewController
     data_location = File.join(App.resources_path, "content.json")
     self.data = BW::JSON.parse(File.read(data_location))
 
-    # self.data.unshift()
+    self.data.unshift favorites_data if show_favorites?
     self.collectionView.reloadData
+  end
+
+  def show_favorites?
+    Favorites.all_raw.count > 0
+  end
+
+  def favorites_data
+    favs = {}
+    favs["category"] = "Favorites"
+    favs["items"] = Favorites.all_raw
+    favs
+  end
+
+  def reload_favorites
+    self.data.shift if self.data[0]["category"] == "Favorites"
+    return unless show_favorites?
+    self.data.unshift favorites_data
   end
 
   def collectionView(view, numberOfItemsInSection:section)
@@ -38,7 +55,7 @@ class PackageViewController < UICollectionViewController
     clv.dequeueReusableCellWithReuseIdentifier(CELL_IDENTIFIER, forIndexPath:index_path).tap do |cell|
       art = ASCIIArt.new(
         art: self.data[index_path.section]["items"][index_path.row]["art"] || "",
-        title: self.data[index_path.section]["items"][index_path.row]["name"] || ""
+        name: self.data[index_path.section]["items"][index_path.row]["name"] || ""
       )
       cell.art = art
       cell.favorite = Favorites.is_favorite? cell.art
@@ -46,8 +63,33 @@ class PackageViewController < UICollectionViewController
 
       cell.when_pressed do |c|
         if c.state == UIGestureRecognizerStateBegan
-          Favorites.toggle c.view.art
-          self.collectionView.reloadItemsAtIndexPaths [index_path]
+
+          self.collectionView.performBatchUpdates(lambda {
+            old_count = Favorites.count
+            Favorites.toggle c.view.art
+            reload_favorites
+            new_count = Favorites.count
+
+            if new_count == 1
+              self.collectionView.insertSections(NSIndexSet.indexSetWithIndex(0))
+            elsif new_count == 0
+              self.collectionView.deleteSections(NSIndexSet.indexSetWithIndex(0))
+            elsif new_count > old_count
+              self.collectionView.insertItemsAtIndexPaths([NSIndexPath.indexPathForRow(old_count, inSection:0)])
+            else
+              self.collectionView.deleteItemsAtIndexPaths([NSIndexPath.indexPathForRow(new_count, inSection:0)])
+            end
+
+            # if index_path.section > 0
+            #   self.collectionView.reloadItemsAtIndexPaths [index_path]
+            # else
+            #   self.collectionView.reloadData
+            # end
+
+            # self.collectionView.reloadSections NSIndexSet.indexSetWithIndex(0)
+          }, completion:lambda {|finished|
+
+          });
         end
       end
     end
