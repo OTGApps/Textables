@@ -67,32 +67,68 @@ class PackageViewController < UICollectionViewController
           self.collectionView.performBatchUpdates(lambda {
             old_count = Favorites.count
             Favorites.toggle c.view.art
+            favorites_index_path = indexPathForArt(c.view.art.art, inSection:0)
             reload_favorites
             new_count = Favorites.count
 
-            if new_count == 1
+            adding_favorites = (new_count > 0 && old_count == 0)
+            deleting_favorites = (new_count == 0)
+
+            if adding_favorites
+              # Add the favorites section
               self.collectionView.insertSections(NSIndexSet.indexSetWithIndex(0))
-            elsif new_count == 0
+            elsif deleting_favorites
+              # Remove the favorites section
               self.collectionView.deleteSections(NSIndexSet.indexSetWithIndex(0))
             elsif new_count > old_count
+              # Add the item to the end of the collection view section
               self.collectionView.insertItemsAtIndexPaths([NSIndexPath.indexPathForRow(old_count, inSection:0)])
             else
-              self.collectionView.deleteItemsAtIndexPaths([NSIndexPath.indexPathForRow(new_count, inSection:0)])
+              # Find the index path of this particular art and delete from the top section
+              self.collectionView.deleteItemsAtIndexPaths([favorites_index_path])
             end
 
-            # if index_path.section > 0
-            #   self.collectionView.reloadItemsAtIndexPaths [index_path]
+            ap index_path.section
+            if index_path.section > 0 || adding_favorites
+              ap "reloading item"
+              self.collectionView.reloadItemsAtIndexPaths [index_path]
             # else
-            #   self.collectionView.reloadData
-            # end
+            #   ap "finding and reloading item."
+            #   found_index = indexPathForArt(c.view.art.art)
+            #   self.collectionView.reloadItemsAtIndexPaths [found_index] if found_index
+            end
 
-            # self.collectionView.reloadSections NSIndexSet.indexSetWithIndex(0)
           }, completion:lambda {|finished|
 
           });
         end
       end
     end
+  end
+
+  def indexPathForArt art, inSection:section
+    ap "Finding path of art: #{art}"
+    self.data[section]["items"].each_with_index do |item, index|
+      ap "index: #{index}, item: #{item}"
+      if item["art"] == art
+        ap "found: #{item['art']} at [#{index},#{section}]"
+        return NSIndexPath.indexPathForRow(index, inSection:section)
+      end
+    end
+    nil
+  end
+
+  def indexPathForArt art
+    ap "Finding path of art: #{art}"
+    self.data.each_with_index do |section, s_idx|
+      section["items"].each_with_index do |item, idx|
+        if item["art"] == art
+          ap "found: #{item['art']} at [#{idx},#{s_idx}]"
+          return NSIndexPath.indexPathForRow(idx, inSection:s_idx)
+        end
+      end
+    end
+    nil
   end
 
   def numberOfSectionsInCollectionView(clv)
