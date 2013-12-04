@@ -175,7 +175,12 @@ class PackageViewController < UICollectionViewController
         # Find the index path of this particular art and delete from the top section
         self.collectionView.deleteItemsAtIndexPaths(favorites_instances)
       end
-      self.collectionView.reloadItemsAtIndexPaths(other_instances)
+
+      if adding_section
+        self.collectionView.reloadItemsAtIndexPaths(all_instances)
+      else
+        self.collectionView.reloadItemsAtIndexPaths(other_instances)
+      end
 
     }, completion:lambda {|finished|
 
