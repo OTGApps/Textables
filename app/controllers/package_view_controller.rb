@@ -26,15 +26,11 @@ class PackageViewController < UICollectionViewController
     data_location = File.join(App.resources_path, "content.json")
     self.data = BW::JSON.parse(File.read(data_location))
 
-    self.data.unshift favorites_data if show_favorites?
+    self.data.unshift favorites if show_favorites?
     self.collectionView.reloadData
   end
 
-  def show_favorites?
-    Favorites.all_raw.count > 0
-  end
-
-  def favorites_data
+  def favorites
     favs = {}
     favs["category"] = "Favorites"
     favs["items"] = Favorites.all_raw
@@ -44,7 +40,11 @@ class PackageViewController < UICollectionViewController
   def reload_favorites
     self.data.shift if self.data[0]["category"] == "Favorites"
     return unless show_favorites?
-    self.data.unshift favorites_data
+    self.data.unshift favorites
+  end
+
+  def show_favorites?
+    Favorites.all_raw.count > 0
   end
 
   def collectionView(view, numberOfItemsInSection:section)
@@ -65,14 +65,24 @@ class PackageViewController < UICollectionViewController
         if c.state == UIGestureRecognizerStateBegan
 
           self.collectionView.performBatchUpdates(lambda {
+
             old_count = Favorites.count
+            old_data = self.data.copy
             Favorites.toggle c.view.art
-            favorites_index_path = indexPathForArt(c.view.art.art, inSection:0)
             reload_favorites
             new_count = Favorites.count
 
             adding_favorites = (new_count > 0 && old_count == 0)
             deleting_favorites = (new_count == 0)
+
+            if index_path.section > 0 || adding_favorites
+              # Reloading item
+              self.collectionView.reloadItemsAtIndexPaths [index_path]
+            else
+              # Finding and reloading item.
+              found_indexes = clean_index_paths(index_paths_for_art(c.view.art.art, old_data))
+              self.collectionView.reloadItemsAtIndexPaths(found_indexes) if found_indexes.count > 0
+            end
 
             if adding_favorites
               # Add the favorites section
@@ -85,17 +95,7 @@ class PackageViewController < UICollectionViewController
               self.collectionView.insertItemsAtIndexPaths([NSIndexPath.indexPathForRow(old_count, inSection:0)])
             else
               # Find the index path of this particular art and delete from the top section
-              self.collectionView.deleteItemsAtIndexPaths([favorites_index_path])
-            end
-
-            ap index_path.section
-            if index_path.section > 0 || adding_favorites
-              ap "reloading item"
-              self.collectionView.reloadItemsAtIndexPaths [index_path]
-            # else
-            #   ap "finding and reloading item."
-            #   found_index = indexPathForArt(c.view.art.art)
-            #   self.collectionView.reloadItemsAtIndexPaths [found_index] if found_index
+              self.collectionView.deleteItemsAtIndexPaths([index_paths_for_art(c.view.art.art, old_data).first])
             end
 
           }, completion:lambda {|finished|
@@ -106,29 +106,24 @@ class PackageViewController < UICollectionViewController
     end
   end
 
-  def indexPathForArt art, inSection:section
-    ap "Finding path of art: #{art}"
-    self.data[section]["items"].each_with_index do |item, index|
-      ap "index: #{index}, item: #{item}"
-      if item["art"] == art
-        ap "found: #{item['art']} at [#{index},#{section}]"
-        return NSIndexPath.indexPathForRow(index, inSection:section)
-      end
-    end
-    nil
+  def clean_index_paths paths
+    paths.reject{|p| p.section == 0 }
   end
 
-  def indexPathForArt art
-    ap "Finding path of art: #{art}"
-    self.data.each_with_index do |section, s_idx|
+  def index_paths_for_art(art, this_data=nil)
+    this_data = self.data if this_data.nil?
+
+    # ap "Finding paths of art: #{art}"
+    ips = []
+    this_data.each_with_index do |section, s_idx|
       section["items"].each_with_index do |item, idx|
         if item["art"] == art
-          ap "found: #{item['art']} at [#{idx},#{s_idx}]"
-          return NSIndexPath.indexPathForRow(idx, inSection:s_idx)
+          # ap "found: #{item['art']} at [#{idx},#{s_idx}]"
+          ips << NSIndexPath.indexPathForRow(idx, inSection:s_idx)
         end
       end
     end
-    nil
+    ips
   end
 
   def numberOfSectionsInCollectionView(clv)
