@@ -117,7 +117,7 @@ class PackageViewController < UICollectionViewController
       delegate:nil,
       cancelButtonTitle:"Cancel",
       destructiveButtonTitle:nil,
-      otherButtonTitles:fav_text, "Copy to Clipboard", "Recent Contacts", "Choose Contact", nil
+      otherButtonTitles:fav_text, "Copy to Clipboard", "Send To...", nil
     )
 
     as.actionSheetStyle = UIActionSheetStyleBlackTranslucent
@@ -131,7 +131,7 @@ class PackageViewController < UICollectionViewController
         toggle_favorite selected
       when 1
         copy_to_clipboard selected
-      when 3
+      when 2
         pick_and_send selected
       end
 
@@ -153,9 +153,6 @@ class PackageViewController < UICollectionViewController
 
     adding_section = (new_count > 0 && old_count == 0)
     deleting_section = (new_count == 0)
-
-    ap "adding_section? #{adding_section}"
-    ap "deleting_section? #{deleting_section}"
 
     all_instances = index_paths_for_art(art, old_data)
     favorites_instances = all_instances.reject{|p| p.section != 0 }
@@ -194,14 +191,34 @@ class PackageViewController < UICollectionViewController
   end
 
   def pick_and_send selected
-    ap "picking"
-    AddressBook.pick presenter:self do |person|
-      if person
-        # person is an AddressBook::Person object
-        ap "selected person:"
-        ap person
-      end
-    end
+    share_string = selected["art"]
+    # shareUrl = NSURL.URLWithString("http://www.captechconsulting.com")
+    items = [share_string]
+
+    activity_vc = UIActivityViewController.alloc.initWithActivityItems(items, applicationActivities:nil)
+    activity_vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical
+    # activity_vc.excludedActivityTypes = [
+    #   UIActivityTypeMail,
+    #   UIActivityTypePrint,
+    #   UIActivityTypeCopyToPasteboard,
+    #   UIActivityTypeAssignToContact,
+    #   UIActivityTypeAddToReadingList,
+    #   UIActivityTypePostToFlickr,
+    #   UIActivityTypePostToVimeo,
+    #   UIActivityTypePostToTencentWeibo,
+    #   UIActivityTypeAirDrop,
+    #   UIActivityTypeSaveToCameraRoll
+    # ]
+
+    self.presentViewController(activity_vc, animated:true, completion:nil)
+
+    # AddressBook.pick presenter:self do |person|
+    #   if person
+    #     # person is an AddressBook::Person object
+    #     ap "selected person:"
+    #     ap person
+    #   end
+    # end
   end
 
 end
