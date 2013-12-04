@@ -17,6 +17,7 @@ class PackageViewController < UICollectionViewController
     self.collectionView.collectionViewLayout.itemSize = CGSizeMake(CELL_WIDTH, CELL_HEIGHT)
 
     self.collectionView.collectionViewLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10)
+    self.collectionView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0)
     self.collectionView.backgroundColor = "#00CC99".to_color
 
     init_data
