@@ -61,58 +61,12 @@ class PackageViewController < UICollectionViewController
       cell.art = art
       cell.favorite = Favorites.is_favorite? cell.art
       cell.backgroundColor = UIColor.colorWithRed(1.0, green:1.0, blue:1.0, alpha:0.8)
-
-      cell.when_pressed do |c|
-        if c.state == UIGestureRecognizerStateBegan
-
-          self.collectionView.performBatchUpdates(lambda {
-
-            old_count = Favorites.count
-            old_data = self.data.copy
-            Favorites.toggle c.view.art
-            reload_favorites
-            new_count = Favorites.count
-
-            adding_favorites = (new_count > 0 && old_count == 0)
-            deleting_favorites = (new_count == 0)
-
-            if index_path.section > 0 || adding_favorites
-              # Reloading item
-              self.collectionView.reloadItemsAtIndexPaths [index_path]
-            else
-              # Finding and reloading item.
-              found_indexes = clean_index_paths(index_paths_for_art(c.view.art.art, old_data))
-              self.collectionView.reloadItemsAtIndexPaths(found_indexes) if found_indexes.count > 0
-            end
-
-            if adding_favorites
-              # Add the favorites section
-              self.collectionView.insertSections(NSIndexSet.indexSetWithIndex(0))
-            elsif deleting_favorites
-              # Remove the favorites section
-              self.collectionView.deleteSections(NSIndexSet.indexSetWithIndex(0))
-            elsif new_count > old_count
-              # Add the item to the end of the collection view section
-              self.collectionView.insertItemsAtIndexPaths([NSIndexPath.indexPathForRow(old_count, inSection:0)])
-            else
-              # Find the index path of this particular art and delete from the top section
-              self.collectionView.deleteItemsAtIndexPaths([index_paths_for_art(c.view.art.art, old_data).first])
-            end
-
-          }, completion:lambda {|finished|
-
-          });
-        end
-      end
     end
-  end
-
-  def clean_index_paths paths
-    paths.reject{|p| p.section == 0 }
   end
 
   def index_paths_for_art(art, this_data=nil)
     this_data = self.data if this_data.nil?
+    art = art["art"] if art.is_a? Hash
 
     # ap "Finding paths of art: #{art}"
     ips = []
@@ -156,12 +110,14 @@ class PackageViewController < UICollectionViewController
   def show_prompt selected
     ap "Showing prompt for: #{selected}"
 
+    fav_text = (Favorites.is_favorite? selected) ? "Remove Favorite" : "Add Favorite"
+
     as = UIActionSheet.alloc.initWithTitle(
       "Text: #{selected['art']}",
       delegate:nil,
       cancelButtonTitle:"Cancel",
       destructiveButtonTitle:nil,
-      otherButtonTitles:"Copy to Clipboard", "Recent Contacts", "Choose Contact", nil
+      otherButtonTitles:fav_text, "Copy to Clipboard", "Recent Contacts", "Choose Contact", nil
     )
 
     as.actionSheetStyle = UIActionSheetStyleBlackTranslucent
@@ -172,14 +128,58 @@ class PackageViewController < UICollectionViewController
 
       case buttonIndex
       when 0
+        toggle_favorite selected
+      when 1
         copy_to_clipboard selected
-      when 2
+      when 3
         pick_and_send selected
       end
 
     end
 
     as.showInView(self.view)
+
+  end
+
+  def toggle_favorite art
+    ap "Toggling favorite for #{art}"
+    adding = Favorites.is_favorite? art
+
+    old_count = Favorites.count
+    old_data = self.data.copy
+    Favorites.toggle art
+    reload_favorites
+    new_count = Favorites.count
+
+    adding_section = (new_count > 0 && old_count == 0)
+    deleting_section = (new_count == 0)
+
+    ap "adding_section? #{adding_section}"
+    ap "deleting_section? #{deleting_section}"
+
+    all_instances = index_paths_for_art(art, old_data)
+    favorites_instances = all_instances.reject{|p| p.section != 0 }
+    other_instances = all_instances.reject{|p| p.section == 0 }
+
+    self.collectionView.performBatchUpdates(lambda {
+      if adding_section
+        # Add the favorites section
+        self.collectionView.insertSections(NSIndexSet.indexSetWithIndex(0))
+      elsif deleting_section
+        # Remove the favorites section
+        self.collectionView.deleteSections(NSIndexSet.indexSetWithIndex(0))
+      elsif new_count > old_count
+        # Add the item to the end of the collection view section
+        self.collectionView.insertItemsAtIndexPaths([NSIndexPath.indexPathForRow(old_count, inSection:0)])
+      else
+        # Find the index path of this particular art and delete from the top section
+        self.collectionView.deleteItemsAtIndexPaths(favorites_instances)
+      end
+      self.collectionView.reloadItemsAtIndexPaths(other_instances)
+
+    }, completion:lambda {|finished|
+
+    });
 
   end
 
