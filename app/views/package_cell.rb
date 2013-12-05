@@ -68,4 +68,12 @@ class PackageCell < UICollectionViewCell
       layer.masksToBounds = true
     end
   end
+
+  def prepareForReuse
+    @art = nil
+    @art_label.text = ""
+    @title_label.text = ""
+    @art_label.numberOfLines = 1
+  end
+
 end
