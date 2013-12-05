@@ -14,6 +14,7 @@ Motion::Project::App.setup do |app|
   app.identifier = 'com.mohawkapps.texties'
   app.version = "1"
   app.short_version = "1.0.0"
+  app.icons = Dir.glob("resources/Icon*.png").map{|icon| icon.split("/").last}
   app.prerendered_icon = true
   app.info_plist['APP_STORE_ID'] = 769404785
 
