@@ -3,16 +3,169 @@
     "category":"Faces",
     "items": [
       {
-        "name": "Bear",
-        "art": "ʕ•ᴥ•ʔ"
+        "name": "Oh well!",
+        "art" : "¯\\_(ツ)_/¯"
       },
       {
         "name": "Disapproving Look",
-        "art": "ಠ_ಠ"
+        "art":  "ಠ_ಠ"
+      },
+      {
+        "name": "Disapproving Look 2",
+        "art":  "ఠ_ఠ"
       },
       {
         "name": "Glasses Smile",
-        "art": "ʘ‿ʘ"
+        "art":  "ʘ‿ʘ"
+      },
+      {
+        "name": "Devious Smile",
+        "art":  "ಠ‿ಠ"
+      },
+      {
+        "name": "HUH?",
+        "art":  "ლ(｀ー´ლ)"
+      },
+      {
+        "name": "Rosy Cheeks",
+        "art":  "(｡◕‿◕｡)"
+      },
+      {
+        "name": "Screaming",
+        "art":  "（　ﾟДﾟ）"
+      },
+      {
+        "name": "hehehe",
+        "art":  "( ¬‿¬)"
+      },
+      {
+        "name": "Pointing Out",
+        "art":  "☜(⌒▽⌒)☞"
+      },
+      {
+        "name": "Haha!",
+        "art":  "☜(ﾟヮﾟ☜)"
+      },
+      {
+        "name": "Run Away Crying",
+        "art":  "ε=ε=ε=┌(;*´Д`)ﾉ"
+      },
+      {
+        "name": "Happy",
+        "art":  "ヽ(´▽`)/"
+      },
+      {
+        "name": "Need A Hug",
+        "art":  "ヽ(´ー｀)ノ"
+      },
+      {
+        "name": "Cheers",
+        "art":  "（ ^_^）o自自o（^_^ ）"
+      },
+      {
+        "name": "Crying",
+        "art":  "ಥ_ಥ"
+      },
+      {
+        "name": "Up All Night",
+        "art":  "۞_۞"
+      },
+      {
+        "name": "High",
+        "art":  "q(❂‿❂)p"
+      },
+      {
+        "name": "Dazed & Confused",
+        "art":  "⊙﹏⊙"
+      },
+      {
+        "name": "No Clue!",
+        "art":  "¯\\_(⊙︿⊙)_/¯"
+      },
+      {
+        "name": "Huh?",
+        "art":  "¯\\(°_o)/¯ "
+      },
+      {
+        "name": "Why, God, WHY!?",
+        "art":  "щ（ﾟДﾟщ）"
+      },
+      {
+        "name": "Staring Eyes",
+        "art":  "Ꙭ"
+      },
+      {
+        "name": "Reaching Down",
+        "art":  "(,,Ծ‸Ծ,,)"
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      }
+    ]
+  },
+  {
+    "category": "Characters",
+    "items": [
+      {
+        "name": "Nyan Cat",
+        "art":  "～～～ ╔͎═͓═͙╗\n～～～ ̨ͨ╚̨̈́═̈́﴾ ̥̮̂˖̫˖̥̮  ̂ )"
+      },
+      {
+        "name": "Officer",
+        "art":  "(̿▀̿ ̿Ĺ̯̿̿▀̿ ̿)̄"
+      },
+      {
+        "name": "PedoBear",
+        "art":  "ᶘ ᵒᴥᵒᶅ"
+      },
+      {
+        "name": "Deal WIth It!",
+        "art":  "(⌐■_■)"
+      },
+      {
+        "name": "Kid Has No Clue",
+        "art":  "٩(͡๏̯͡๏)۶"
+      },
+      {
+        "name": "Blob",
+        "art":  "ヽ༼ຈل͜ຈ༽/"
+      },
+      {
+        "name": "Party Boy",
+        "art":  "┗(＾0＾)┓"
+      },
+      {
+        "name": "Party Time",
+        "art":  "┏(-_-)┛┗(-_-)┓┗(-_-)┛"
+      },
+      {
+        "name": "Sparkles!",
+        "art":  "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧"
+      },
+      {
+        "name": "Ziodberg",
+        "art":  "(•ω•)"
+      },
+      {
+        "name": "Bearing Gifts",
+        "art":  "(´・ω・)っ由"
+      },
+      {
+        "name": "Le Meme",
+        "art":  "͡° ͜ʖ ͡°"
+      },
+      {
+        "name": "Le Meme 2",
+        "art":  "(͡° ͜ʖ ͡°)"
       }
     ]
   },
@@ -20,53 +173,252 @@
     "category": "Table Flip",
     "items": [
       {
-        "name": "Classic",
-        "art": "(╯°□°）╯︵ ┻━┻"
+        "name": "Classic Flip",
+        "art":  "(╯°□°）╯︵ ┻━┻"
       },
       {
         "name": "Angry",
-        "art": "(ﾉಥ益ಥ）ﾉ﻿ ┻━┻"
+        "art":  "(ﾉಥ益ಥ）ﾉ﻿ ┻━┻"
       },
       {
         "name": "One-Handed",
-        "art": "┬──┬﻿ ¯\\_(ツ)"
+        "art":  "┬──┬﻿ ¯\\_(ツ)"
       },
       {
         "name": "Double / Scream",
-        "art": "┻━┻ ︵ヽ(`Д´)ﾉ︵﻿ ┻━┻"
+        "art":  "┻━┻ ︵ヽ(`Д´)ﾉ︵﻿ ┻━┻"
       },
       {
         "name": "Indifferent",
-        "art": "┬─┬ノ( º _ ºノ)"
+        "art":  "┬─┬ノ( º _ ºノ)"
       },
       {
         "name": "Angry",
-        "art": "(ノಠ益ಠ)ノ彡┻━┻"
+        "art":  "(ノಠ益ಠ)ノ彡┻━┻"
       },
       {
         "name": "Monacle",
-        "art": "(╯ಠ_ರೃ)╯︵ ┻━┻"
+        "art":  "(╯ಠ_ರೃ)╯︵ ┻━┻"
       },
       {
         "name": "Person Flip",
-        "art": "(╯°□°）╯︵ /(.□. \\)"
+        "art":  "(╯°□°）╯︵ /(.□. \\)"
       },
       {
         "name": "Jake the Dog",
-        "art": "(┛❍ᴥ❍﻿)┛彡┻━┻"
+        "art":  "(┛❍ᴥ❍﻿)┛彡┻━┻"
       },
       {
         "name": "Owl Flip",
-        "art": "(ʘ∇ʘ)ク 彡 ┻━┻"
+        "art":  "(ʘ∇ʘ)ク 彡 ┻━┻"
       },
       {
         "name": "One-handed",
-        "art": "/(ò.ó)┛彡┻━┻"
+        "art":  "/(ò.ó)┛彡┻━┻"
       },
       {
         "name": "Trippin' Flip",
-        "art": "(┛◉Д◉)┛彡┻━┻"
+        "art":  "(┛◉Д◉)┛彡┻━┻"
       }
     ]
+  },
+  {
+    "category": "Flexing",
+    "items": [
+      {
+        "name": "Double Flex",
+        "art":  "ᕙ(⇀‸↼‶)ᕗ"
+      },
+      {
+        "name": "Superior Flex",
+        "art":  "ᕙ(`▽´)ᕗ"
+      },
+      {
+        "name": "One-Arm Flex",
+        "art":  "ᕙ( ^ₒ^ c)"
+      },
+      {
+        "name": "Boxing Champion",
+        "art":  "ᕦ(ò_ó*)ᕤ"
+      }
+    ]
+  },
+  {
+    "category": "Animals",
+    "items": [
+      {
+        "name": "Cute Bear",
+        "art":  "ʕ•ᴥ•ʔ"
+      },
+      {
+        "name": "Grizzly",
+        "art":  "ლʕಠᴥಠʔლ"
+      },
+      {
+        "name": "Bear Hug",
+        "art":  "ʕु•̫͡•ʔु"
+      },
+      {
+        "name": "Butterfly",
+        "art":  "Ƹ̵̡Ӝ̵̨̄Ʒ"
+      },
+      {
+        "name": "Dog",
+        "art":  "(ᵔᴥᵔ)"
+      }
+    ]
+  },
+  {
+    "category": "Flip The Bird",
+    "items": [
+      {
+        "name": "I Don't Care",
+        "art":  "╭∩╮（︶︿︶）╭∩╮"
+      },
+      {
+        "name": "Crazy Eyes",
+        "art":  "┌∩┐(◣_◢)┌∩┐"
+      },
+      {
+        "name": "Bowing",
+        "art":  "t ( - _ - t )"
+      },
+      {
+        "name": "Go Away",
+        "art":  "凸(-_-)凸"
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+    ]
+  },
+  {
+    "category": "Phrases",
+    "items": [
+      {
+        "name": "YOLO!",
+        "art":  "Yᵒᵘ Oᶰˡʸ Lᶤᵛᵉ Oᶰᶜᵉ"
+      },
+      {
+        "name": "O, RLY?",
+        "art":  "﴾͡๏̯͡๏﴿ O'RLY?"
+      },
+      {
+        "name": "Love",
+        "art":  "ℒℴνℯ"
+      }
+    ]
+  },
+  {
+    "category": "Objects",
+    "items": [
+      {
+        "name": "Rose",
+        "art":  "@>--;--"
+      },
+      {
+        "name": "5 Bucks",
+        "art":  "[̲̅$̲̅(̲̅5̲̅)̲̅$̲̅]"
+      },
+      {
+        "name": "Small Guns",
+        "art":  " ̿ ̿̿'̿'\\̵͇̿̿\\=(•̪○)=/̵͇̿̿/'̿̿ ̿ ̿ ̿"
+      },
+      {
+        "name": "Large Guns",
+        "art":  "̿̿ ̿̿ ̿̿ ̿̿ ̿'̿'\\̵͇̿̿\\з=( ͡° ͜ʖ ͡°)=ε/̵͇̿̿/’̿’̿ ̿ ̿̿ ̿̿ ̿̿ "
+      },
+      {
+        "name": "Sniper Rifle",
+        "art":  "▄︻̷̿┻̿═━一"
+      },
+      {
+        "name": "Sniper Rifle 2",
+        "art":  "▄︻̷̿┻̿┳═一"
+      },
+      {
+        "name": "Cigarette",
+        "art":  " ̜ ̳ ̳ ̳ ̳ ͙ ڪ"
+      },
+      {
+        "name": "To Boldly Go...",
+        "art":  "═̷͟═͟ ⊂⁀ ⊃"
+      },
+      {
+        "name": "Snowman",
+        "art":  "☃"
+      }
+    ]
+  },
+  {
+    "category": "Disruptive",
+    "items": [
+      {
+        "name": "Endless Tears",
+        "art":  "Ỏ̷͖͈̞̩͎̻̫̫̜͉̠̫͕̭̭̫̫̹̗̹͈̼̠̖͍͚̥͈̮̼͕̠̤̯̻̥̬̗̼̳̤̳̬̪̹͚̞̼̠͕̼̠̦͚̫͔̯̹͉͉̘͎͕̼̣̝͙̱̟̹̩̟̳̦̭͉̮̖̭̣̣̞̙̗̜̺̭̻̥͚͙̝̦̲̱͉͖͉̰̦͎̫̣̼͎͍̠̮͓̹̹͉̤̰̗̙͕͇͔̱͕̭͈̳̗̭͔̘̖̺̮̜̠͖̘͓̳͕̟̠̱̫̤͓͔̘̰̲͙͍͇̙͎̣̼̗̖͙̯͉̠̟͈͍͕̪͓̝̩̦̖̹̼̠̘̮͚̟͉̺̜͍͓̯̳̱̻͕̣̳͉̻̭̭̱͍̪̩̭̺͕̺̼̥̪͖̦̟͎̻̰_Ỏ̷͖͈̞̩͎̻̫̫̜͉̠̫͕̭̭̫̫̹̗̹͈̼̠̖͍͚̥͈̮̼͕̠̤̯̻̥̬̗̼̳̤̳̬̪̹͚̞̼̠͕̼̠̦͚̫͔̯̹͉͉̘͎͕̼̣̝͙̱̟̹̩̟̳̦̭͉̮̖̭̣̣̞̙̗̜̺̭̻̥͚͙̝̦̲̱͉͖͉̰̦͎̫̣̼͎͍̠̮͓̹̹͉̤̰̗̙͕͇͔̱͕̭͈̳̗̭͔̘̖̺̮̜̠͖̘͓̳͕̟̠̱̫̤͓͔̘̰̲͙͍͇̙͎̣̼̗̖͙̯͉̠̟͈͍͕̪͓̝̩̦̖̹̼̠̘̮͚̟͉̺̜͍͓̯̳̱̻͕̣̳͉̻̭̭̱͍̪̩̭̺͕̺̼̥̪͖̦̟͎̻̰"
+      }
+    ]
+  },
+  {
+    "category": "Embelishments",
+    "items": [
+      {
+        "name": "Border",
+        "art":  "•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•*´¨`*•.¸¸.•"
+      },
+      {
+        "name": "Heart / Music",
+        "art":  "♪♫•*¨*•.¸¸❤¸¸.•*¨*•♫♪"
+      },
+      {
+        "name": "Customize Text 1",
+        "art":  "˙·٠•●♥ Text ♥●•٠·˙"
+      },
+      {
+        "name": "Customize Text 2",
+        "art":  "•♥•♥•♥•♥•♥ Text ♥•♥•♥•♥•♥•"
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      }
+    ]
+  },
+  {
+    "category": "",
+    "items": []
+  },
+  {
+    "category": "",
+    "items": []
+  },
+  {
+    "category": "",
+    "items": []
   }
 ]

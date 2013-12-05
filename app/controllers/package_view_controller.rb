@@ -49,7 +49,7 @@ class PackageViewController < UICollectionViewController
   end
 
   def collectionView(view, numberOfItemsInSection:section)
-    self.data[section]["items"].count || 0
+    self.data[section]["items"].reject{|i| i['name'] == "" }.count || 0
   end
 
   def collectionView(clv, cellForItemAtIndexPath:index_path)
@@ -82,7 +82,7 @@ class PackageViewController < UICollectionViewController
   end
 
   def numberOfSectionsInCollectionView(clv)
-    self.data.count || 0
+    self.data.reject{|d| d['category'] == ""}.count || 0
   end
 
   def collectionView(clv, viewForSupplementaryElementOfKind:kind, atIndexPath:path)
@@ -97,7 +97,7 @@ class PackageViewController < UICollectionViewController
   end
 
   def show_prompt selected
-    ap "Showing prompt for: #{selected}"
+    # ap "Showing prompt for: #{selected}"
 
     fav_text = (Favorites.is_favorite? selected) ? "Remove Favorite" : "Add Favorite"
 
@@ -113,7 +113,7 @@ class PackageViewController < UICollectionViewController
 
     as.tapBlock = lambda do |actionSheet, buttonIndex|
       chose_title = actionSheet.buttonTitleAtIndex(buttonIndex)
-      NSLog("Chose #{chose_title} (#{buttonIndex})")
+      # NSLog("Chose #{chose_title} (#{buttonIndex})")
 
       case buttonIndex
       when 0
@@ -131,7 +131,7 @@ class PackageViewController < UICollectionViewController
   end
 
   def toggle_favorite art
-    ap "Toggling favorite for #{art}"
+    # ap "Toggling favorite for #{art}"
     adding = Favorites.is_favorite? art
 
     old_count = Favorites.count
