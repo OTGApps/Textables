@@ -19,3 +19,5 @@ nbproject
 vendor/Pods
 
 /vendor/Podfile.lock
+
+/provisioning/
