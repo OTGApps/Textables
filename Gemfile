@@ -6,7 +6,7 @@ gem "motion-cocoapods"
 gem "cocoapods"
 
 # RubyMotion
-gem 'bubble-wrap', :git => 'https://github.com/rubymotion/BubbleWrap', :require => ['bubble-wrap/core']
+gem 'bubble-wrap', :git => 'https://github.com/rubymotion/BubbleWrap', :require => ['bubble-wrap/core', 'bubble-wrap/http']
 
 # Rubygems
 gem "rake", '>= 0.9.4'

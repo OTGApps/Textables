@@ -25,11 +25,38 @@ class PackageViewController < UICollectionViewController
     info_button = UIBarButtonItem.alloc.initWithImage(info_image, style:UIBarButtonItemStylePlain, target:self, action:"show_info:")
     self.navigationItem.rightBarButtonItem = info_button
 
+  end
+
+  def viewWillAppear animated
     init_data
   end
 
+  def viewDidAppear animated
+    fetch_data if needs_textification
+  end
+
+  def needs_textification
+    App::Persistence['last_checked_texties'].nil? || 2.days.ago.to_i > App::Persistence['last_checked_texties']
+  end
+
+  def fetch_data
+    # Fetch and save the data locally.
+    ap "Fetching new texties."
+    TextiesAPI.textify do |text, error|
+      if error.nil? && text[0] == "["
+        File.open(data_location, 'w') { |file| file.write(text) }
+        App::Persistence['last_checked_texties'] = Time.now.to_i
+        init_data
+      end
+    end
+
+  end
+
+  def data_location
+    @data_location ||= File.join(App.resources_path, "content.json")
+  end
+
   def init_data
-    data_location = File.join(App.resources_path, "content.json")
     self.data = BW::JSON.parse(File.read(data_location))
 
     self.data.unshift favorites if show_favorites?
@@ -39,6 +66,7 @@ class PackageViewController < UICollectionViewController
   def show_info sender
     ap "Showing info"
   end
+
   def favorites
     favs = {}
     favs["category"] = "Favorites"
