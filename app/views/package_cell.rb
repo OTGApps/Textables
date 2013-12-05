@@ -8,6 +8,11 @@ class PackageCell < UICollectionViewCell
     @art = ascii_object
     @art_label.text = ascii_object.art
     @title_label.text = ascii_object.name
+
+    if ascii_object.art.include? "\n"
+      @art_label.lineBreakMode = NSLineBreakByWordWrapping
+      @art_label.numberOfLines = 0
+    end
   end
 
   def art
