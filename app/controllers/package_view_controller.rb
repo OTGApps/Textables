@@ -20,6 +20,11 @@ class PackageViewController < UICollectionViewController
     self.collectionView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0)
     self.collectionView.backgroundColor = "#00CC99".to_color
 
+    # Info Button
+    info_image = UIImage.imageNamed "icon_info"
+    info_button = UIBarButtonItem.alloc.initWithImage(info_image, style:UIBarButtonItemStylePlain, target:self, action:"show_info:")
+    self.navigationItem.rightBarButtonItem = info_button
+
     init_data
   end
 
@@ -31,6 +36,9 @@ class PackageViewController < UICollectionViewController
     self.collectionView.reloadData
   end
 
+  def show_info sender
+    ap "Showing info"
+  end
   def favorites
     favs = {}
     favs["category"] = "Favorites"
