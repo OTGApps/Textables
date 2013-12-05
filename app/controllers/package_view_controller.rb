@@ -93,18 +93,7 @@ class PackageViewController < UICollectionViewController
 
   def collectionView(collectionView, didSelectItemAtIndexPath:indexPath)
     selected = self.data[indexPath.section]["items"][indexPath.row]
-
-    if AddressBook.authorized?
-      ap "This app is authorized!"
-      show_prompt selected
-    else
-      if AddressBook.request_authorization
-        # do something now that the user has said "yes"
-        show_prompt selected
-      else
-        App.alert "#{App.name} doesn't have access to your contacts. You can authorize the app in your Settings.app under\nPrivacy->Contacts."
-      end
-    end
+    show_prompt selected
   end
 
   def show_prompt selected
@@ -197,28 +186,14 @@ class PackageViewController < UICollectionViewController
 
     activity_vc = UIActivityViewController.alloc.initWithActivityItems(items, applicationActivities:nil)
     activity_vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical
-    # activity_vc.excludedActivityTypes = [
-    #   UIActivityTypeMail,
-    #   UIActivityTypePrint,
-    #   UIActivityTypeCopyToPasteboard,
-    #   UIActivityTypeAssignToContact,
-    #   UIActivityTypeAddToReadingList,
-    #   UIActivityTypePostToFlickr,
-    #   UIActivityTypePostToVimeo,
-    #   UIActivityTypePostToTencentWeibo,
-    #   UIActivityTypeAirDrop,
-    #   UIActivityTypeSaveToCameraRoll
-    # ]
+    activity_vc.excludedActivityTypes = [
+      UIActivityTypeAddToReadingList,
+      UIActivityTypeAirDrop,
+      UIActivityTypeCopyToPasteboard,
+      UIActivityTypePrint
+    ]
 
     self.presentViewController(activity_vc, animated:true, completion:nil)
-
-    # AddressBook.pick presenter:self do |person|
-    #   if person
-    #     # person is an AddressBook::Person object
-    #     ap "selected person:"
-    #     ap person
-    #   end
-    # end
   end
 
 end
