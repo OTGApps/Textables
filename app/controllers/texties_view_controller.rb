@@ -36,7 +36,7 @@ class TextiesViewController < UICollectionViewController
   end
 
   def viewDidAppear animated
-    fetch_data if needs_textification
+    fetch_data if needs_textification && !Device.simulator?
   end
 
   def needs_textification

@@ -99,16 +99,28 @@
         "art":  "(,,Ծ‸Ծ,,)"
       },
       {
-        "name": "",
-        "art":  ""
+        "name": "Embarrased",
+        "art":  "(﹡⌒▽⌒﹡)"
       },
       {
-        "name": "",
-        "art":  ""
+        "name": "Extra Embarrased",
+        "art":  "(/ω＼)"
       },
       {
-        "name": "",
-        "art":  ""
+        "name": "Puzzled",
+        "art":  "く(＾_・)ゝ"
+      },
+      {
+        "name": "Just Woke up",
+        "art":  "╰(´・｀)ﾉ"
+      },
+      {
+        "name": "Sleep Walking",
+        "art":  "(¬º-°)¬"
+      },
+      {
+        "name": "Whatever",
+        "art":  "（＾～＾）ノ"
       }
     ]
   },
@@ -162,6 +174,54 @@
       {
         "name": "Le Meme 2",
         "art":  "(͡° ͜ʖ ͡°)"
+      },
+      {
+        "name": "Big Nose",
+        "art":  "(͡๏̯¿͡๏)"
+      },
+      {
+        "name": "In Love",
+        "art":  "♥（｡✿‿✿｡）❤"
+      },
+      {
+        "name": "Baby",
+        "art":  "（⌒◎⌒）"
+      },
+      {
+        "name": "Angry",
+        "art":  "{{|└(>o< )┘|}}"
+      },
+      {
+        "name": "Asleep",
+        "art":  "★☽(。￣-￣)"
+      },
+      {
+        "name": "Singer",
+        "art":  "♪＼(^o^)／♩"
+      },
+      {
+        "name": "Dancing",
+        "art":  "〈( ^.^)ノ"
+      },
+      {
+        "name": "Writing a Note",
+        "art":  "＿〆(。。)"
+      },
+      {
+        "name": "Waving",
+        "art":  "ヾ(＾∇＾)"
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
       }
     ]
   },
@@ -261,6 +321,78 @@
       {
         "name": "Dog",
         "art":  "(ᵔᴥᵔ)"
+      },
+      {
+        "name": "Pig",
+        "art":  "q(￣(oo)￣)p"
+      },
+      {
+        "name": "Fat Pig",
+        "art":  "^(｀（ ● ●）´ )^"
+      },
+      {
+        "name": "Cute Pig",
+        "art":  "<(ﾟ´(｡｡)`ﾟ)>"
+      },
+      {
+        "name": "Angry Cat",
+        "art":  "o(≧o≦)o"
+      },
+      {
+        "name": "Cat",
+        "art":  "（=ﾟ･ﾟ=）"
+      },
+      {
+        "name": "Polar Bear",
+        "art":  "(●￣(ｴ)￣ ●)"
+      },
+      {
+        "name": "Fish",
+        "art":  ">°))))彡"
+      },
+      {
+        "name": "Swimming Fish",
+        "art":  "～～ >°))))))))><<"
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
       }
     ]
   },
@@ -284,25 +416,25 @@
         "art":  "凸(-_-)凸"
       },
       {
-        "name": "",
-        "art":  ""
+        "name": "Mad",
+        "art":  "凸 (｀0´)凸"
       },
       {
-        "name": "",
-        "art":  ""
+        "name": "Rage",
+        "art":  "┌∩┐(﹒︠益﹒︡)┌∩┐"
       },
       {
-        "name": "",
-        "art":  ""
+        "name": "Steaming",
+        "art":  "凸(`д´)凸"
       },
       {
-        "name": "",
-        "art":  ""
+        "name": "Indignant",
+        "art":  "凸(｀⌒´メ)凸"
       },
       {
-        "name": "",
-        "art":  ""
-      },
+        "name": "Smiley",
+        "art":  "凸( ͡° ͜ʖ ͡°)凸"
+      }
     ]
   },
   {
@@ -406,8 +538,46 @@
     ]
   },
   {
-    "category": "",
-    "items": []
+    "category": "Dirty",
+    "items": [
+      {
+        "name": "Boobs",
+        "art":  "（。ㅅ。）"
+      },
+      {
+        "name": "Big Boobs",
+        "art":  "（。 ㅅ  。）"
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      },
+      {
+        "name": "",
+        "art":  ""
+      }
+
+    ]
   },
   {
     "category": "",
