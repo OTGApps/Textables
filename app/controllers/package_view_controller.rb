@@ -44,7 +44,7 @@ class PackageViewController < UICollectionViewController
     ap "Fetching new texties."
     TextiesAPI.textify do |text, error|
       if error.nil? && text[0] == "["
-        File.open(data_location, 'w') { |file| file.write(text) }
+        File.open(Data.documents, 'w') { |file| file.write(text) }
         App::Persistence['last_checked_texties'] = Time.now.to_i
         init_data
       end
@@ -52,12 +52,9 @@ class PackageViewController < UICollectionViewController
 
   end
 
-  def data_location
-    @data_location ||= File.join(App.resources_path, "content.json")
-  end
 
   def init_data
-    self.data = BW::JSON.parse(File.read(data_location))
+    self.data = Data.json_data
 
     self.data.unshift favorites if show_favorites?
     self.collectionView.reloadData
@@ -218,7 +215,7 @@ class PackageViewController < UICollectionViewController
   def pick_and_send selected
     share_string = selected["art"]
     # shareUrl = NSURL.URLWithString("http://www.captechconsulting.com")
-    items = [share_string]
+    items = [clean_newlines(share_string)]
 
     activity_vc = UIActivityViewController.alloc.initWithActivityItems(items, applicationActivities:nil)
     activity_vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical
@@ -230,6 +227,16 @@ class PackageViewController < UICollectionViewController
     ]
 
     self.presentViewController(activity_vc, animated:true, completion:nil)
+  end
+
+  def clean_newlines str
+    return str unless str.include? "\n"
+
+    new_str = []
+    str.split("\n").each do |s|
+      new_str << s.rstrip
+    end
+    new_str.join("\n")
   end
 
 end
