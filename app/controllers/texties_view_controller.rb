@@ -1,4 +1,4 @@
-class PackageViewController < UICollectionViewController
+class TextiesViewController < UICollectionViewController
   attr_accessor :data
 
   HEADER_IDENTIFIER = "PackageHeader"
