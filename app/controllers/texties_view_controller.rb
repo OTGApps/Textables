@@ -137,9 +137,10 @@ class TextiesViewController < UICollectionViewController
     # ap "Showing prompt for: #{selected}"
 
     fav_text = (Favorites.is_favorite? selected) ? "Remove Favorite" : "Add Favorite"
+    selected_art = (selected.is_a?(String)) ? selected : selected['art']
 
     as = UIActionSheet.alloc.initWithTitle(
-      "Text: #{selected['art']}",
+      "Text: #{selected_art}",
       delegate:nil,
       cancelButtonTitle:"Cancel",
       destructiveButtonTitle:nil,
@@ -156,9 +157,9 @@ class TextiesViewController < UICollectionViewController
       when 0
         toggle_favorite selected
       when 1
-        copy_to_clipboard selected
+        copy_to_clipboard selected_art
       when 2
-        pick_and_send selected
+        pick_and_send selected_art
       end
 
     end
@@ -212,14 +213,11 @@ class TextiesViewController < UICollectionViewController
   end
 
   def copy_to_clipboard selected
-    pb = UIPasteboard.generalPasteboard
-    pb.setString selected["art"]
+    UIPasteboard.generalPasteboard.setString selected
   end
 
   def pick_and_send selected
-    share_string = selected["art"]
-    # shareUrl = NSURL.URLWithString("http://www.captechconsulting.com")
-    items = [share_string]
+    items = [selected]
 
     activity_vc = UIActivityViewController.alloc.initWithActivityItems(items, applicationActivities:nil)
     activity_vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical
