@@ -232,7 +232,17 @@ class TextiesViewController < UICollectionViewController
   end
 
   def crazy_text sender
+    alert = BW::UIAlertView.plain_text_input(:title => "Create your own\nC尺ﾑ乙ﾘ ｲ乇ﾒｲ!") do |alert|
+      if alert.clicked_button.index != 0
+        art = ASCIIArt.new(
+          art: CrazyText.convert(alert.plain_text_field.text),
+          name: "Crazy Text"
+        )
+        show_prompt(art.to_dict, false)
+      end
+    end
 
+    alert.show
   end
 
 end
