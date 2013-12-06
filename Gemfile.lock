@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rubymotion/BubbleWrap
-  revision: 2fa01255162b6e38a9b348b7a7ef509989d77167
+  revision: fbeea2808d1b826d96850a719c78160c2141f8c3
   specs:
     bubble-wrap (1.4.0)
 
@@ -36,6 +36,8 @@ GEM
     json_pure (1.8.1)
     motion-cocoapods (1.4.0)
       cocoapods (>= 0.26.2)
+    motion-takeoff (0.0.1)
+      bubble-wrap (> 1.0.0)
     motion-testflight (1.5)
     multi_json (1.8.2)
     nap (0.5.1)
@@ -54,5 +56,6 @@ DEPENDENCIES
   bubble-wrap!
   cocoapods
   motion-cocoapods
+  motion-takeoff
   motion-testflight
   rake (>= 0.9.4)

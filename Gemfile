@@ -5,8 +5,12 @@ ruby "2.0.0"
 gem "motion-cocoapods"
 gem "cocoapods"
 
+# Testflight
+gem 'motion-testflight'
+
 # RubyMotion
 gem 'bubble-wrap', :git => 'https://github.com/rubymotion/BubbleWrap', :require => ['bubble-wrap/core', 'bubble-wrap/http']
+gem 'motion-takeoff'#, :path => '../motion-takeoff'
 
 # Rubygems
 gem "rake", '>= 0.9.4'
