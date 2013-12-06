@@ -26,7 +26,7 @@ class TextiesViewController < UICollectionViewController
     self.navigationItem.rightBarButtonItem = info_button
 
     # Crazy Letters Button
-    crazy_letters_button = UIBarButtonItem.alloc.initWithTitle("c尺ﾑ乙ﾘ", style:UIBarButtonItemStylePlain, target:self, action:"crazy_text:")
+    crazy_letters_button = UIBarButtonItem.alloc.initWithTitle("crazy".kanjify, style:UIBarButtonItemStylePlain, target:self, action:"crazy_text:")
     self.navigationItem.leftBarButtonItem = crazy_letters_button
 
   end
@@ -259,11 +259,11 @@ class TextiesViewController < UICollectionViewController
   def crazy_text sender
 
     as = UIActionSheet.alloc.initWithTitle(
-      "What Kind Of Text?",
+      "What kind of text?",
       delegate:nil,
       cancelButtonTitle:"Cancel",
       destructiveButtonTitle:nil,
-      otherButtonTitles:"C尺ﾑ乙ﾘ ｲ乇ﾒｲ", "ʇxәʇ uʍop әp!spu", nil
+      otherButtonTitles:'crazy text'.kanjify, 'upside down text'.upside_down, nil
     )
     as.actionSheetStyle = UIActionSheetStyleBlackTranslucent
 
@@ -281,9 +281,10 @@ class TextiesViewController < UICollectionViewController
   end
 
   def prompt_for_crazy
-    alert = BW::UIAlertView.plain_text_input(:title => "Create your own\nC尺ﾑ乙ﾘ ｲ乇ﾒｲ!") do |alert|
+    alert = BW::UIAlertView.plain_text_input(:title => "Create your own\n" << "crazy text".kanjify << "!") do |alert|
       if alert.clicked_button.index != 0
-        show_prompt(alert.plain_text_field.text.kanjify, false)
+        s = "#{alert.plain_text_field.text}"
+        show_prompt(s.kanjify, false)
       end
     end
 
@@ -291,9 +292,10 @@ class TextiesViewController < UICollectionViewController
   end
 
   def prompt_for_upsidedown
-    alert = BW::UIAlertView.plain_text_input(:title => "Create your own\ʇxәʇ uʍop әp!spu!") do |alert|
+    alert = BW::UIAlertView.plain_text_input(:title => "Create your own\n" << "upside down text!".upside_down) do |alert|
       if alert.clicked_button.index != 0
-        show_prompt(alert.plain_text_field.text.upsidedown, false)
+        s = "#{alert.plain_text_field.text}"
+        show_prompt(s.upside_down, false)
       end
     end
 
