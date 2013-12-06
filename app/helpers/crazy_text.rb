@@ -2,7 +2,7 @@ class CrazyText
 
   def self.convert text
     regexp_keys = Regexp.union(CrazyText.char_table.keys)
-    text.gsub(regexp_keys, char_table)
+    text.downcase.gsub(regexp_keys, char_table)
   end
 
   def self.char_table
