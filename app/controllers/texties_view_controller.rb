@@ -7,7 +7,7 @@ class TextiesViewController < UICollectionViewController
   CELL_HEIGHT = 75
 
   def viewDidLoad
-    self.title = "Texties"
+    self.title = App.name
 
     self.collectionView.registerClass(PackageCell, forCellWithReuseIdentifier:CELL_IDENTIFIER)
     # Package Header Needs to be registered, too
