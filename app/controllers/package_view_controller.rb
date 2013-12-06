@@ -25,6 +25,10 @@ class PackageViewController < UICollectionViewController
     info_button = UIBarButtonItem.alloc.initWithImage(info_image, style:UIBarButtonItemStylePlain, target:self, action:"show_info:")
     self.navigationItem.rightBarButtonItem = info_button
 
+    # Crazy Letters Button
+    crazy_letters_button = UIBarButtonItem.alloc.initWithTitle("c尺ﾑ乙ﾘ", style:UIBarButtonItemStylePlain, target:self, action:"crazy_text:")
+    self.navigationItem.leftBarButtonItem = crazy_letters_button
+
   end
 
   def viewWillAppear animated
@@ -215,7 +219,7 @@ class PackageViewController < UICollectionViewController
   def pick_and_send selected
     share_string = selected["art"]
     # shareUrl = NSURL.URLWithString("http://www.captechconsulting.com")
-    items = [clean_newlines(share_string)]
+    items = [share_string]
 
     activity_vc = UIActivityViewController.alloc.initWithActivityItems(items, applicationActivities:nil)
     activity_vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical
@@ -229,14 +233,8 @@ class PackageViewController < UICollectionViewController
     self.presentViewController(activity_vc, animated:true, completion:nil)
   end
 
-  def clean_newlines str
-    return str unless str.include? "\n"
+  def crazy_text sender
 
-    new_str = []
-    str.split("\n").each do |s|
-      new_str << s.rstrip
-    end
-    new_str.join("\n")
   end
 
 end
