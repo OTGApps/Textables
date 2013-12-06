@@ -133,19 +133,31 @@ class TextiesViewController < UICollectionViewController
     show_prompt selected
   end
 
-  def show_prompt selected
-    # ap "Showing prompt for: #{selected}"
-
-    fav_text = (Favorites.is_favorite? selected) ? "Remove Favorite" : "Add Favorite"
+  def show_prompt selected, can_favorite = true
     selected_art = (selected.is_a?(String)) ? selected : selected['art']
 
-    as = UIActionSheet.alloc.initWithTitle(
-      "Text: #{selected_art}",
-      delegate:nil,
-      cancelButtonTitle:"Cancel",
-      destructiveButtonTitle:nil,
-      otherButtonTitles:fav_text, "Copy to Clipboard", "Send To...", nil
-    )
+    if can_favorite
+
+      fav_text = (Favorites.is_favorite? selected) ? "Remove Favorite" : "Add Favorite"
+      as = UIActionSheet.alloc.initWithTitle(
+        "Text: #{selected_art}",
+        delegate:nil,
+        cancelButtonTitle:"Cancel",
+        destructiveButtonTitle:nil,
+        otherButtonTitles:fav_text, "Copy to Clipboard", "Send To...", nil
+      )
+
+    else
+
+      as = UIActionSheet.alloc.initWithTitle(
+        "Text: #{selected_art}",
+        delegate:nil,
+        cancelButtonTitle:"Cancel",
+        destructiveButtonTitle:nil,
+        otherButtonTitles:"Copy to Clipboard", "Send To...", nil
+      )
+
+    end
 
     as.actionSheetStyle = UIActionSheetStyleBlackTranslucent
 
@@ -153,13 +165,26 @@ class TextiesViewController < UICollectionViewController
       chose_title = actionSheet.buttonTitleAtIndex(buttonIndex)
       # NSLog("Chose #{chose_title} (#{buttonIndex})")
 
-      case buttonIndex
-      when 0
-        toggle_favorite selected
-      when 1
-        copy_to_clipboard selected_art
-      when 2
-        pick_and_send selected_art
+      if can_favorite
+
+        case buttonIndex
+        when 0
+          toggle_favorite selected
+        when 1
+          copy_to_clipboard selected_art
+        when 2
+          pick_and_send selected_art
+        end
+
+      else
+
+        case buttonIndex
+        when 0
+          copy_to_clipboard selected_art
+        when 1
+          pick_and_send selected_art
+        end
+
       end
 
     end
@@ -238,7 +263,7 @@ class TextiesViewController < UICollectionViewController
           art: CrazyText.convert(alert.plain_text_field.text),
           name: "Crazy Text"
         )
-        show_prompt(art.to_dict, false)
+        show_prompt(CrazyText.convert(alert.plain_text_field.text), false)
       end
     end
 
