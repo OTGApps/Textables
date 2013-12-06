@@ -21,3 +21,5 @@ vendor/Pods
 /vendor/Podfile.lock
 
 /provisioning/
+
+testflight_launcher.rb
