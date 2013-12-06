@@ -257,13 +257,43 @@ class TextiesViewController < UICollectionViewController
   end
 
   def crazy_text sender
+
+    as = UIActionSheet.alloc.initWithTitle(
+      "What Kind Of Text?",
+      delegate:nil,
+      cancelButtonTitle:"Cancel",
+      destructiveButtonTitle:nil,
+      otherButtonTitles:"C尺ﾑ乙ﾘ ｲ乇ﾒｲ", "ʇxәʇ uʍop әp!spu", nil
+    )
+    as.actionSheetStyle = UIActionSheetStyleBlackTranslucent
+
+    as.tapBlock = lambda do |actionSheet, buttonIndex|
+      case buttonIndex
+      when 0
+        prompt_for_crazy
+      when 1
+        prompt_for_upsidedown
+      end
+    end
+
+    as.showInView(self.view)
+
+  end
+
+  def prompt_for_crazy
     alert = BW::UIAlertView.plain_text_input(:title => "Create your own\nC尺ﾑ乙ﾘ ｲ乇ﾒｲ!") do |alert|
       if alert.clicked_button.index != 0
-        art = ASCIIArt.new(
-          art: CrazyText.convert(alert.plain_text_field.text),
-          name: "Crazy Text"
-        )
-        show_prompt(CrazyText.convert(alert.plain_text_field.text), false)
+        show_prompt(alert.plain_text_field.text.kanjify, false)
+      end
+    end
+
+    alert.show
+  end
+
+  def prompt_for_upsidedown
+    alert = BW::UIAlertView.plain_text_input(:title => "Create your own\ʇxәʇ uʍop әp!spu!") do |alert|
+      if alert.clicked_button.index != 0
+        show_prompt(alert.plain_text_field.text.upsidedown, false)
       end
     end
 
