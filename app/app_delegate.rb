@@ -46,9 +46,19 @@ class AppDelegate
   def applicationDidEnterBackground(application)
     # Schedule a bunch of reminders to use the app.
     (1..3).to_a.each do |interval|
-      ap "Scheduling for week #{interval}"
+      message = "You haven't sent a Textie in #{interval} week"
+
+      case interval
+      when 1
+        message << ". I bet your friends could use a laugh!"
+      when 2
+        message << "s. Try sending a Textie to a friend!"
+      when 3
+        message << "s. We'll stop bothering you. ¯\\_(ツ)_/¯"
+      end
+
       Takeoff::Reminders.schedule(
-        body: "You haven't sent a Textie in a week. I bet your friends could use a laugh!",
+        body: message,
         fire_date: interval.week
       )
     end
