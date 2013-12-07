@@ -17,8 +17,29 @@ class AppDelegate
     messages = MotionTakeoff::Messages.new
     messages.message launch:1, title:"Welcome to #{App.name}!", message:"#{App.name} is a fun way to share unique text artwork with your friends!\n\nTap a Textie to get started!"
     messages.message launch:3, title:"Quick Tip:", message:"If you favorite a Textie, it adds it to the top of this screen!"
-    messages.message launch:5, title:"C尺ﾑ乙ﾘ ｲ乇ﾒｲ!", message:"Tap the c尺ﾑ乙ﾘ button to create your own crazy text and send to friends!"
+    messages.message launch:5, title:"Crazy Text".kanjify, message:"Tap the " << "crazy".kanjify << " button to create your own crazy text and send to friends!"
     messages.takeoff
+
+    MotionTakeoff::Reminders.reset
+  end
+
+  def applicationDidEnterBackground(application)
+    # Schedule a bunch of reminders to use the app.
+    MotionTakeoff::Reminders.schedule(
+      body: "You haven't sent a Textie in a week. I bet your friends could use a laugh!",
+      fire_date: 1.week
+    )
+
+    MotionTakeoff::Reminders.schedule(
+      body: "You haven't used #{App.name} in 2 weeks! Try sending a Textie to a friend!",
+      fire_date: 2.weeks
+    )
+
+    MotionTakeoff::Reminders.schedule(
+      body: "You haven't used #{App.name} in 3 weeks. We'll stop bothering you. ¯\\_(ツ)_/¯",
+      fire_date: 3.weeks
+    )
+
   end
 
 end
