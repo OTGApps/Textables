@@ -6,6 +6,11 @@ class AppDelegate
     # 3rd Party integrations
     unless Device.simulator?
       app_id = NSBundle.mainBundle.objectForInfoDictionaryKey('APP_STORE_ID')
+
+      # Flurry
+      NSSetUncaughtExceptionHandler("uncaughtExceptionHandler")
+      Flurry.startSession("CX7X2RMSF8WR5KB53H7T")
+
       # Appirater
       Appirater.setAppId app_id
 
@@ -51,6 +56,11 @@ class AppDelegate
       fire_date: 3.weeks
     )
 
+  end
+
+  #Flurry exception handler
+  def uncaughtExceptionHandler(exception)
+    Flurry.logError("Uncaught", message:"Crash!", exception:exception)
   end
 
 end
