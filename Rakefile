@@ -26,11 +26,8 @@ Motion::Project::App.setup do |app|
     pod 'TestFlightSDK'
   end
 
-  app.testflight do
-    app.testflight.sdk = 'vendor/Pods/TestFlightSDK'
-    app.testflight.api_token = 'b2a3667268f446b35c4ab473259912c9_MTUwNjI'
-    app.testflight.team_token = '2cf18a21ce6f6ccef94c49811c719285_MzA5NjUwMjAxMy0xMi0wNSAxODowMDoxMy4yODE0NzE'
-  end
+  app.testflight.api_token = 'b2a3667268f446b35c4ab473259912c9_MTUwNjI'
+  app.testflight.team_token = '2cf18a21ce6f6ccef94c49811c719285_MzA5NjUwMjAxMy0xMi0wNSAxODowMDoxMy4yODE0NzE'
 
   app.development do
     app.entitlements['get-task-allow'] = true

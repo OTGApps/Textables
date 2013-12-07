@@ -16,10 +16,8 @@ nbproject
 .idea
 .dat*.*
 
-vendor/Pods
-
+/vendor/Pods
 /vendor/Podfile.lock
-
 /provisioning/
 
 testflight_launcher.rb
