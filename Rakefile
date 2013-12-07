@@ -20,21 +20,22 @@ Motion::Project::App.setup do |app|
 
   app.pods do
     pod 'UIActionSheet+Blocks'
+    pod 'FlurrySDK'
+    pod 'Appirater'
+    pod 'Harpy'
+    pod 'TestFlightSDK'
+  end
+
+  app.testflight do
+    app.testflight.sdk = 'vendor/Pods/TestFlightSDK'
+    app.testflight.api_token = 'b2a3667268f446b35c4ab473259912c9_MTUwNjI'
+    app.testflight.team_token = '2cf18a21ce6f6ccef94c49811c719285_MzA5NjUwMjAxMy0xMi0wNSAxODowMDoxMy4yODE0NzE'
   end
 
   app.development do
     app.entitlements['get-task-allow'] = true
     app.codesign_certificate = "iPhone Developer: Mark Rickert (YA2VZGDX4S)"
     app.provisioning_profile = "./provisioning/TextiesDevelopment.mobileprovision"
-
-    app.testflight do
-      app.testflight.sdk = 'vendor/TestFlightSDK'
-      app.testflight.api_token = 'b2a3667268f446b35c4ab473259912c9_MTUwNjI'
-      app.testflight.team_token = '2cf18a21ce6f6ccef94c49811c719285_MzA5NjUwMjAxMy0xMi0wNSAxODowMDoxMy4yODE0NzE'
-      # app.testflight.notify = true # default is false
-      # app.testflight.identify_testers = true # default is false
-    end
-
     # app.pods do
     #   pod "Reveal-iOS-SDK"
     # end
