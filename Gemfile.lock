@@ -36,7 +36,7 @@ GEM
     json_pure (1.8.1)
     motion-cocoapods (1.4.0)
       cocoapods (>= 0.26.2)
-    motion-takeoff (0.0.3)
+    motion-takeoff (0.0.4)
       bubble-wrap (> 1.0.0)
     motion-testflight (1.5)
     multi_json (1.8.2)
