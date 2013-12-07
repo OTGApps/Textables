@@ -36,6 +36,7 @@ Motion::Project::App.setup do |app|
     app.entitlements['get-task-allow'] = true
     app.codesign_certificate = "iPhone Developer: Mark Rickert (YA2VZGDX4S)"
     app.provisioning_profile = "./provisioning/TextiesDevelopment.mobileprovision"
+    app.testflight.identify_testers = true
     # app.pods do
     #   pod "Reveal-iOS-SDK"
     # end
@@ -45,5 +46,6 @@ Motion::Project::App.setup do |app|
     app.entitlements['get-task-allow'] = false
     app.codesign_certificate = "iPhone Distribution: Mohawk Apps, LLC (DW9QQZR4ZL)"
     app.provisioning_profile = "./provisioning/TextiesDistribution.mobileprovision"
+    app.testflight.identify_testers = false
   end
 end
