@@ -12,8 +12,8 @@ Motion::Project::App.setup do |app|
   app.device_family = [:iphone]
   app.interface_orientations = [:portrait, :portrait_upside_down]
   app.identifier = 'com.mohawkapps.texties'
-  app.version = "3"
-  app.short_version = "0.0.3"
+  app.version = "4"
+  app.short_version = "0.0.4"
   app.icons = Dir.glob("resources/Icon*.png").map{|icon| icon.split("/").last}
   app.prerendered_icon = true
   app.info_plist['APP_STORE_ID'] = 769404785
