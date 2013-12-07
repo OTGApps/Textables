@@ -14,7 +14,11 @@ class AppDelegate
       # Appirater
       Appirater.setAppId app_id
 
+      # Harpy
+      Harpy.sharedInstance.setAppID app_id
+      Harpy.sharedInstance.checkVersion
     end
+
     texties_vc = TextiesViewController.alloc.initWithCollectionViewLayout(UICollectionViewFlowLayout.new)
     nav_controller = UINavigationController.alloc.initWithRootViewController(texties_vc)
 
