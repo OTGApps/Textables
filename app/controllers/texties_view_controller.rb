@@ -225,14 +225,9 @@ class TextiesViewController < UICollectionViewController
         self.collectionView.deleteItemsAtIndexPaths(favorites_instances)
       end
 
-      if adding_section
-        self.collectionView.reloadItemsAtIndexPaths(all_instances)
-      else
-        self.collectionView.reloadItemsAtIndexPaths(other_instances)
-      end
-
     }, completion:lambda {|finished|
-
+        all_instances = index_paths_for_art(art)
+        self.collectionView.reloadItemsAtIndexPaths(all_instances)
     });
 
   end
