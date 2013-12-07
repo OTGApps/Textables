@@ -45,21 +45,13 @@ class AppDelegate
 
   def applicationDidEnterBackground(application)
     # Schedule a bunch of reminders to use the app.
-    Takeoff::Reminders.schedule(
-      body: "You haven't sent a Textie in a week. I bet your friends could use a laugh!",
-      fire_date: 1.week
-    )
-
-    Takeoff::Reminders.schedule(
-      body: "You haven't used #{App.name} in 2 weeks! Try sending a Textie to a friend!",
-      fire_date: 2.weeks
-    )
-
-    Takeoff::Reminders.schedule(
-      body: "You haven't used #{App.name} in 3 weeks. We'll stop bothering you. ¯\\_(ツ)_/¯",
-      fire_date: 3.weeks
-    )
-
+    (1..3).to_a.each do |interval|
+      ap "Scheduling for week #{interval}"
+      Takeoff::Reminders.schedule(
+        body: "You haven't sent a Textie in a week. I bet your friends could use a laugh!",
+        fire_date: interval.week
+      )
+    end
   end
 
   #Flurry exception handler
