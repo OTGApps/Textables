@@ -3,6 +3,13 @@ class AppDelegate
   attr_accessor :window
 
   def application(application, didFinishLaunchingWithOptions:launchOptions)
+    # 3rd Party integrations
+    unless Device.simulator?
+      app_id = NSBundle.mainBundle.objectForInfoDictionaryKey('APP_STORE_ID')
+      # Appirater
+      Appirater.setAppId app_id
+
+    end
     texties_vc = TextiesViewController.alloc.initWithCollectionViewLayout(UICollectionViewFlowLayout.new)
     nav_controller = UINavigationController.alloc.initWithRootViewController(texties_vc)
 
@@ -10,6 +17,9 @@ class AppDelegate
     self.window.rootViewController = nav_controller
     self.window.makeKeyAndVisible
     self.window.tintColor = "#00CC99".to_color
+
+    Appirater.appLaunched(true) unless Device.simulator?
+
     true
   end
 
@@ -21,6 +31,7 @@ class AppDelegate
     messages.takeoff
 
     MotionTakeoff::Reminders.reset
+    Appirater.appEnteredForeground(true) unless Device.simulator?
   end
 
   def applicationDidEnterBackground(application)
