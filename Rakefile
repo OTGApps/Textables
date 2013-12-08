@@ -12,11 +12,15 @@ Motion::Project::App.setup do |app|
   app.device_family = [:iphone]
   app.interface_orientations = [:portrait, :portrait_upside_down]
   app.identifier = 'com.mohawkapps.texties'
+  app.seed_id = 'DW9QQZR4ZL'
   app.version = "4"
   app.short_version = "0.0.4"
   app.icons = Dir.glob("resources/Icon*.png").map{|icon| icon.split("/").last}
   app.prerendered_icon = true
   app.info_plist['APP_STORE_ID'] = 769404785
+  app.entitlements['keychain-access-groups'] = [
+    app.seed_id + '.' + app.identifier
+  ]
 
   app.pods do
     pod 'UIActionSheet+Blocks'
@@ -27,7 +31,7 @@ Motion::Project::App.setup do |app|
   end
 
   app.testflight.api_token = 'b2a3667268f446b35c4ab473259912c9_MTUwNjI'
-  app.testflight.team_token = '2cf18a21ce6f6ccef94c49811c719285_MzA5NjUwMjAxMy0xMi0wNSAxODowMDoxMy4yODE0NzE'
+  app.testflight.team_token = 'd1890325-9003-4dc9-a5ae-2cfa868e833f'
 
   app.development do
     app.entitlements['get-task-allow'] = true
