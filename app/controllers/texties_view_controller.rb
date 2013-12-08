@@ -40,25 +40,32 @@ class TextiesViewController < UICollectionViewController
   end
 
   def needs_textification
-    App::Persistence['last_checked_texties'].nil? || 2.days.ago.to_i > App::Persistence['last_checked_texties']
+    App::Persistence['last_checked_texties'].nil? || 2.minutes.ago.to_i > App::Persistence['last_checked_texties']
   end
 
   def fetch_data
     # Fetch and save the data locally.
-    ap "Fetching new texties."
+    old_count = TextiesData.texties_count
     TextiesAPI.textify do |text, error|
       if error.nil? && text[0] == "["
-        File.open(Data.documents, 'w') { |file| file.write(text) }
+        File.open(TextiesData.documents, 'w') { |file| file.write(text) }
         App::Persistence['last_checked_texties'] = Time.now.to_i
+        new_count = TextiesData.texties_count
+
+        NSLog "Got valid result from server."
+        if new_count > old_count
+          NSLog "Got #{new_count - old_count} new texties."
+          App.alert("New #{App.name} added!", "We just added #{new_count - old_count} new #{App.name}!\nEnjoy!")
+        end
+
         init_data
       end
     end
-
   end
 
 
   def init_data
-    self.data = Data.json_data
+    self.data = TextiesData.json
 
     self.data.unshift favorites if show_favorites?
     self.collectionView.reloadData
