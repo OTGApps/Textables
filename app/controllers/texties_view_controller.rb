@@ -79,9 +79,9 @@ class TextiesViewController < UICollectionViewController
 
     form = Formotion::Form.new({
       sections: [{
-        title: "Tell Your friends!",
+        title: "Tell Your friends:",
         rows: [{
-          title: "Share the app!",
+          title: "Share the app",
           subtitle: "Text it, Tweet it, Facbook it or Email it!",
           type: :activity,
           value: {
@@ -93,7 +93,7 @@ class TextiesViewController < UICollectionViewController
           type: :rate_itunes
         }]
       }, {
-        title: "About Texties",
+        title: "About Texties:",
         rows: [{
           title: "Version",
           type: :static,
