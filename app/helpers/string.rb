@@ -24,7 +24,7 @@ class String
       'w' => 'ʍ',
       'y' => 'ʎ',
       '!' => '¡',
-      '¿' => '¿'
+      '?' => '¿'
     }
 
     regexp_keys = Regexp.union(char_table.keys)
