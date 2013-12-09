@@ -61,7 +61,7 @@ class TextiesViewController < UICollectionViewController
         new_count = TextiesData.sharedData.texties_count
 
         Flurry.logEvent("API_HIT", withParameters:{old_count: old_count, new_count: new_count})
-        NSLog "Got valid result from #{App.name} server."
+        NSLog "Got valid result from #{App.name} server. Old:#{old_count} New:#{new_count}"
         if new_count > old_count
           NSLog "Got #{new_count - old_count} new texties."
           App.alert("New #{App.name} added:", message: "We just added #{new_count - old_count} new #{App.name}!\nEnjoy!")
