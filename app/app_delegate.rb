@@ -42,7 +42,7 @@ class AppDelegate
       title: "Have You Shared #{App.name} Yet?",
       message: "You've been using #{App.name} a lot!\n\nWant to share the app with some friends? We'd love you forever!",
       action: Proc.new{ App.delegate.view_controller.show_info(nil) },
-      :buttons => ["No Thanks", "OK"]
+      buttons: ["No Thanks", "OK"]
     )
     messages.takeoff
 
