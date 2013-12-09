@@ -92,7 +92,7 @@ class TextiesViewController < UICollectionViewController
         rows: [{
           title: "Share the app",
           subtitle: "Text it, Tweet it, Facbook it or Email it!",
-          type: :activity,
+          type: :share,
           value: {
             items: "I'm using the #{App.name} app to send cool text art. Check it out! http://www.textiesapp.com/",
             excluded: activity_exclusions
@@ -112,6 +112,14 @@ class TextiesViewController < UICollectionViewController
           subtitle: "Log it here.",
           type: :issue_link,
           value: "https://github.com/MohawkApps/Texties/issues/"
+        }, {
+          title: "Email me suggestions!",
+          subtitle: "I'd love to hear from you",
+          type: :email_me,
+          value: {
+            to: "mark@mohawkapps.com",
+            subject: "Texties App Feedback"
+          }
         }]
       }, {
         title: "About Texties:",

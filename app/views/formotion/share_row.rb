@@ -1,10 +1,10 @@
 module Formotion
   module RowType
-    class IssueLinkRow < WebLinkRow
+    class ShareRow < ActivityRow
 
       def after_build(cell)
         super
-        cell.imageView.image = UIImage.imageNamed("issue")
+        cell.imageView.image = UIImage.imageNamed("share")
       end
 
     end
