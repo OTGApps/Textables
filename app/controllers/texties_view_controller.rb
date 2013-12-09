@@ -77,7 +77,8 @@ class TextiesViewController < UICollectionViewController
   def init_data
     self.data = TextiesData.sharedData.json
 
-    self.data.unshift favorites if show_favorites?
+    # self.data.unshift favorites if show_favorites?
+    reload_favorites
     self.collectionView.reloadData
   end
 
