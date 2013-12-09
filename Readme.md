@@ -3,12 +3,18 @@
 
 ![App Icon](https://raw.github.com/MohawkApps/Texties/master/resources/Icon-120.png)
 
-Texties is a fun way to send Unicode art to your friends! Explore a library of over 100 fun ASCII & Unicode artwork that you can send to your friends over SMS, iMessage, Email, Facebook, and Twitter!
+Texties is the fun new way to send Unicode and ASCII art to your friends! Explore a library of over 100 ASCII & Unicode artwork that you can send to your friends over SMS, iMessage, Email, Facebook, and Twitter!
 
-* Select favorites for easy access to your most used Texties!
-* Create your own unique c尺ﾑ乙ﾘ and uʍop әpᴉsdn text and share your creations!
+* Select favorites for easy access to your most used Texties
+* Send to: SMS, iMessage, Email, Facebook, and Twitter
+* Copy to the clipboard to use anywhere
+* Create your own unique c尺ﾑ乙ﾘ & upside down text and share your creations
 
 If you love expressing yourself to your friends using more than words with Emoji, you'll love using Texties!
+
+Stay tuned! We'll be adding more Texties to the library over time!
+
+This app is open source. Browse the source code here: https://github.com/MohawkApps/Texties/
 
 ## How to run the app:
 
