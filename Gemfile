@@ -16,7 +16,7 @@ gem 'motion-takeoff'#, :path => '../motion-takeoff'
 gem "rake", '>= 0.9.4'
 
 # Testflight
-gem 'motion-testflight'
+gem 'motion-testflight', :github => 'hboon/motion-testflight', :branch => 'takeoff-on-launch-only'
 
 # Development
 gem 'awesome_print_motion'
