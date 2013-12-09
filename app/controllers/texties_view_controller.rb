@@ -248,12 +248,7 @@ class TextiesViewController < UICollectionViewController
 
     activity_vc = UIActivityViewController.alloc.initWithActivityItems(items, applicationActivities:nil)
     activity_vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical
-    activity_vc.excludedActivityTypes = [
-      UIActivityTypeAddToReadingList,
-      UIActivityTypeAirDrop,
-      UIActivityTypeCopyToPasteboard,
-      UIActivityTypePrint
-    ]
+    activity_vc.excludedActivityTypes = activity_exclusions
 
     self.presentViewController(activity_vc, animated:true, completion:nil)
   end
@@ -302,6 +297,15 @@ class TextiesViewController < UICollectionViewController
     end
 
     alert.show
+  end
+
+  def activity_exclusions
+    [
+      UIActivityTypeAddToReadingList,
+      UIActivityTypeAirDrop,
+      UIActivityTypeCopyToPasteboard,
+      UIActivityTypePrint
+    ]
   end
 
 end
