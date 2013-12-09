@@ -83,7 +83,8 @@ class TextiesViewController < UICollectionViewController
   def show_info sender
 
     @north_carolina_coords ||= CLLocationCoordinate2D.new(35.244140625, -79.8046875)
-    @north_carolina ||= CLCircularRegion.alloc.initWithCenter(north_carolina_coords, radius:225093, identifier:"North Carolina")
+    @north_carolina ||= CLCircularRegion.alloc.initWithCenter(@north_carolina_coords, radius:225093, identifier:"North Carolina")
+    @charlotte ||= CLLocationCoordinate2D.new(35.2269444, -80.8433333)
 
     @form ||= Formotion::Form.new({
       sections: [{
@@ -125,11 +126,11 @@ class TextiesViewController < UICollectionViewController
         }, {
           type: :map,
           value: {
-            coord: north_carolina,
+            coord: @north_carolina,
             enabled: false,
             animated: false,
             pin: {
-              coord: CLLocationCoordinate2D.new(35.2269444, -80.8433333)
+              coord: @charlotte
             }
           },
           row_height: 200,
@@ -138,8 +139,7 @@ class TextiesViewController < UICollectionViewController
       }]
     })
 
-    about_vc = AboutViewController.alloc.initWithForm(form)
-    # about_vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal
+    about_vc = AboutViewController.alloc.initWithForm(@form)
     nav_controller = UINavigationController.alloc.initWithRootViewController(about_vc)
     self.presentViewController(nav_controller, animated:true, completion:nil)
 
@@ -383,6 +383,7 @@ class TextiesViewController < UICollectionViewController
     @form = nil
     @north_carolina_coords = nil
     @north_carolina = nil
+    @charlotte = nil
   end
 
 end
