@@ -1,6 +1,7 @@
 GIT
-  remote: git://github.com/clayallsopp/formotion.git
-  revision: 0b1c1dc25cd259af99c06fd4b1b942f91212ea7f
+  remote: git://github.com/markrickert/formotion.git
+  revision: d610bfc4bf6b2965a6e0665e16aa5c8ef6780afe
+  branch: texties
   specs:
     formotion (1.6)
       bubble-wrap (~> 1.4.0)
