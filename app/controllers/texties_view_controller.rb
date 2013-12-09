@@ -92,7 +92,7 @@ class TextiesViewController < UICollectionViewController
         title: "Tell Your friends:",
         rows: [{
           title: "Share the app",
-          subtitle: "Text it, Tweet it, Facbook it or Email it!",
+          subtitle: "Text, Email, Tweet, or Facebook!",
           type: :share,
           value: {
             items: "I'm using the #{App.name} app to send cool text art. Check it out! http://www.textiesapp.com/",
