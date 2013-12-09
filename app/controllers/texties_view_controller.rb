@@ -37,6 +37,7 @@ class TextiesViewController < UICollectionViewController
 
   def viewDidAppear animated
     fetch_data if needs_textification && !Device.simulator?
+    # show_info nil
   end
 
   def needs_textification
@@ -72,7 +73,68 @@ class TextiesViewController < UICollectionViewController
   end
 
   def show_info sender
-    ap "Showing info"
+
+    north_carolina_coords = CLLocationCoordinate2D.new(35.244140625, -79.8046875)
+    north_carolina = CLCircularRegion.alloc.initWithCenter(north_carolina_coords, radius:225093, identifier:"North Carolina")
+
+    form = Formotion::Form.new({
+      sections: [{
+        title: "Tell Your friends!",
+        rows: [{
+          title: "Share the app!",
+          subtitle: "Text it, Tweet it, Facbook it or Email it!",
+          type: :activity,
+          value: {
+            items: "I'm using the #{App.name} app to send cool text art. Check it out! http://www.textiesapp.com/",
+            excluded: activity_exclusions
+          }
+        },{
+          title: "Rate #{App.name} on iTunes",
+          type: :rate_itunes
+        }]
+      }, {
+        title: "About Texties",
+        rows: [{
+          title: "Version",
+          type: :static,
+          placeholder: App.info_plist['CFBundleShortVersionString'],
+          selection_style: :none
+        }, {
+          title: "Copyright",
+          type: :static,
+          font: { name: 'HelveticaNeue', size: 14 },
+          placeholder: "© 2013, Mohawk Apps, LLC",
+          selection_style: :none
+        }, {
+          title: "Visit MohawkApps.com",
+          type: :web_link,
+          value: "http://www.mohawkapps.com"
+        }, {
+          title: "Made with ♥ in North Carolina",
+          type: :static,
+          enabled: false,
+          selection_style: :none
+        }, {
+          type: :map,
+          value: {
+            coord: north_carolina,
+            enabled: false,
+            animated: false,
+            pin: {
+              coord: CLLocationCoordinate2D.new(35.2269444, -80.8433333)
+            }
+          },
+          row_height: 200,
+          selection_style: :none
+        }]
+      }]
+    })
+
+    about_vc = AboutViewController.alloc.initWithForm(form)
+    nav = UINavigationController.alloc.initWithRootViewController about_vc
+    about_vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal
+    self.presentViewController(nav, animated:true, completion:nil)
+
   end
 
   def favorites
