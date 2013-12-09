@@ -33,3 +33,6 @@ This app is open source. Browse the source code here: https://github.com/MohawkA
 3. Send me a pull request.
 
 *I also like it when people who can't contribute [open an issue](https://github.com/MohawkApps/Texties/issues)*
+
+---
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/MohawkApps/texties/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
