@@ -1,4 +1,4 @@
-class PackageHeader < UICollectionReusableView
+class SectionHeader < UICollectionReusableView
 
   def display_string=(string)
     @display_label.text = string

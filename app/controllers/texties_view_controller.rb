@@ -1,17 +1,18 @@
 class TextiesViewController < UICollectionViewController
   attr_accessor :data
 
-  HEADER_IDENTIFIER = "PackageHeader"
+  HEADER_IDENTIFIER = "SectionHeader"
   CELL_IDENTIFIER = "Package Cell"
   CELL_WIDTH = 145
   CELL_HEIGHT = 75
 
   def viewDidLoad
+    super
     self.title = App.name
 
-    self.collectionView.registerClass(PackageCell, forCellWithReuseIdentifier:CELL_IDENTIFIER)
+    self.collectionView.registerClass(ArtCell, forCellWithReuseIdentifier:CELL_IDENTIFIER)
     # Package Header Needs to be registered, too
-    self.collectionView.registerClass(PackageHeader, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HEADER_IDENTIFIER)
+    self.collectionView.registerClass(SectionHeader, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HEADER_IDENTIFIER)
     # THIS TRICKY PROPERTY MUST BE SET, OR DELEGATES AND ALL ARE IGNORED
     self.collectionView.collectionViewLayout.headerReferenceSize = CGSizeMake(10.0, 30.0)
     self.collectionView.collectionViewLayout.itemSize = CGSizeMake(CELL_WIDTH, CELL_HEIGHT)
@@ -32,41 +33,48 @@ class TextiesViewController < UICollectionViewController
   end
 
   def viewWillAppear animated
+    super
     init_data
   end
 
   def viewDidAppear animated
-    fetch_data if needs_textification && !Device.simulator?
-    # show_info nil
+    super
+    fetch_data if needs_textification
   end
 
   def needs_textification
-    App::Persistence['last_checked_texties'].nil? || 2.minutes.ago.to_i > App::Persistence['last_checked_texties']
+    # Don't check the server if the launch count is under 2
+    return false if App::Persistence['motion_takeoff_launch_count'] < 2
+
+    time = (Device.simulator?) ? 2.seconds.ago.to_i : 2.days.ago.to_i
+    App::Persistence['last_checked_texties'].nil? || time > App::Persistence['last_checked_texties']
   end
 
   def fetch_data
     # Fetch and save the data locally.
-    old_count = TextiesData.texties_count
+    old_count = TextiesData.sharedData.texties_count
     TextiesAPI.textify do |text, error|
       if error.nil? && text[0] == "["
-        File.open(TextiesData.documents, 'w') { |file| file.write(text) }
+        File.open(TextiesData.sharedData.documents, 'w') { |file| file.write(text) }
         App::Persistence['last_checked_texties'] = Time.now.to_i
-        new_count = TextiesData.texties_count
+        TextiesData.sharedData.cleanup
+        new_count = TextiesData.sharedData.texties_count
 
-        NSLog "Got valid result from server."
+        NSLog "Got valid result from #{App.name} server."
         if new_count > old_count
           NSLog "Got #{new_count - old_count} new texties."
           App.alert("New #{App.name} added!", "We just added #{new_count - old_count} new #{App.name}!\nEnjoy!")
         end
 
         init_data
+      else
+        NSLog "Error retrieving data from the #{App.name} server."
       end
     end
   end
 
-
   def init_data
-    self.data = TextiesData.json
+    self.data = TextiesData.sharedData.json
 
     self.data.unshift favorites if show_favorites?
     self.collectionView.reloadData
@@ -74,10 +82,10 @@ class TextiesViewController < UICollectionViewController
 
   def show_info sender
 
-    north_carolina_coords = CLLocationCoordinate2D.new(35.244140625, -79.8046875)
-    north_carolina = CLCircularRegion.alloc.initWithCenter(north_carolina_coords, radius:225093, identifier:"North Carolina")
+    @north_carolina_coords ||= CLLocationCoordinate2D.new(35.244140625, -79.8046875)
+    @north_carolina ||= CLCircularRegion.alloc.initWithCenter(north_carolina_coords, radius:225093, identifier:"North Carolina")
 
-    form = Formotion::Form.new({
+    @form ||= Formotion::Form.new({
       sections: [{
         title: "Tell Your friends:",
         rows: [{
@@ -131,9 +139,9 @@ class TextiesViewController < UICollectionViewController
     })
 
     about_vc = AboutViewController.alloc.initWithForm(form)
-    nav = UINavigationController.alloc.initWithRootViewController about_vc
-    about_vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal
-    self.presentViewController(nav, animated:true, completion:nil)
+    # about_vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal
+    nav_controller = UINavigationController.alloc.initWithRootViewController(about_vc)
+    self.presentViewController(nav_controller, animated:true, completion:nil)
 
   end
 
@@ -302,7 +310,7 @@ class TextiesViewController < UICollectionViewController
   end
 
   def copy_to_clipboard selected
-    UIPasteboard.generalPasteboard.setString selected
+    UIPasteboard.generalPasteboard.setString(selected)
   end
 
   def pick_and_send selected
@@ -368,6 +376,13 @@ class TextiesViewController < UICollectionViewController
       UIActivityTypeCopyToPasteboard,
       UIActivityTypePrint
     ]
+  end
+
+  def didReceiveMemoryWarning
+    super
+    @form = nil
+    @north_carolina_coords = nil
+    @north_carolina = nil
   end
 
 end

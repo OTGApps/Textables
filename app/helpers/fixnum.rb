@@ -8,6 +8,11 @@ class Fixnum
     Time.now - self
   end
 
+  def seconds
+    self
+  end
+  alias :second :seconds
+
   def minutes
     self * SECONDS_IN_MINUTE
   end

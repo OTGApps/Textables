@@ -1,4 +1,4 @@
-class PackageCell < UICollectionViewCell
+class ArtCell < UICollectionViewCell
 
   def favorite= bool
     @favorite_star.image = bool ? UIImage.imageNamed("star-highlighted") : UIImage.imageNamed("star")
