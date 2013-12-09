@@ -22,7 +22,7 @@ class TextiesViewController < UICollectionViewController
     self.collectionView.backgroundColor = "#00CC99".to_color
 
     # Info Button
-    info_image = UIImage.imageNamed "icon_info"
+    info_image = UIImage.imageNamed "info"
     info_button = UIBarButtonItem.alloc.initWithImage(info_image, style:UIBarButtonItemStylePlain, target:self, action:"show_info:")
     self.navigationItem.rightBarButtonItem = info_button
 
@@ -100,6 +100,18 @@ class TextiesViewController < UICollectionViewController
         },{
           title: "Rate #{App.name} on iTunes",
           type: :rate_itunes
+        }]
+      }, {
+        title: "#{App.name} is open source:",
+        rows: [{
+          title: "View on GitHub",
+          type: :github_link,
+          value: "https://github.com/MohawkApps/Texties"
+        }, {
+          title: "Found a bug?",
+          subtitle: "Log it here.",
+          type: :issue_link,
+          value: "https://github.com/MohawkApps/Texties/issues/"
         }]
       }, {
         title: "About Texties:",
