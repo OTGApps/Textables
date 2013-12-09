@@ -36,6 +36,7 @@ class Favorites
   def self.favorite art
     # ap "Setting favorite: #{art.art}"
     art = art.to_dict unless art.is_a? Hash
+    Flurry.logEvent("FAVORITE", withParameters:{art: art["art"]})
     favs = Favorites.all_raw.mutableCopy
     favs << art
     App::Persistence['favorites'] = favs
@@ -44,6 +45,7 @@ class Favorites
   def self.unfavorite art
     # ap "Removing favorite: #{art.to_dict}"
     favs = Favorites.all_raw.mutableCopy
+    Flurry.logEvent("UNFAVORITE", withParameters:{art: art["art"]})
     art = art.to_dict unless art.is_a? Hash
     favs.reject!{|ascii| ascii["art"] == art[:art] && ascii["name"] == art[:name]}
     App::Persistence['favorites'] = favs

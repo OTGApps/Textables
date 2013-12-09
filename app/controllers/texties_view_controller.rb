@@ -60,6 +60,7 @@ class TextiesViewController < UICollectionViewController
         TextiesData.sharedData.cleanup
         new_count = TextiesData.sharedData.texties_count
 
+        Flurry.logEvent("API_HIT", withParameters:{old_count: old_count, new_count: new_count})
         NSLog "Got valid result from #{App.name} server."
         if new_count > old_count
           NSLog "Got #{new_count - old_count} new texties."
@@ -159,6 +160,7 @@ class TextiesViewController < UICollectionViewController
       }]
     })
 
+    Flurry.logEvent("SHOW_ABOUT")
     about_vc = AboutViewController.alloc.initWithForm(@form)
     nav_controller = UINavigationController.alloc.initWithRootViewController(about_vc)
     self.presentViewController(nav_controller, animated:true, completion:nil)
@@ -325,16 +327,18 @@ class TextiesViewController < UICollectionViewController
     }, completion:lambda {|finished|
         all_instances = index_paths_for_art(art)
         self.collectionView.reloadItemsAtIndexPaths(all_instances)
-    });
+    })
 
   end
 
   def copy_to_clipboard selected
+    Flurry.logEvent("COPY", withParameters:{art: selected})
     UIPasteboard.generalPasteboard.setString(selected)
   end
 
   def pick_and_send selected
     items = [selected]
+    Flurry.logEvent("SHARE", withParameters:{art: selected})
 
     activity_vc = UIActivityViewController.alloc.initWithActivityItems(items, applicationActivities:nil)
     activity_vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical
@@ -400,6 +404,7 @@ class TextiesViewController < UICollectionViewController
 
   def didReceiveMemoryWarning
     super
+    Flurry.logEvent("MEMORY_WARNING")
     @form = nil
     @north_carolina_coords = nil
     @north_carolina = nil

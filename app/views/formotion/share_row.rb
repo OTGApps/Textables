@@ -7,6 +7,11 @@ module Formotion
         cell.imageView.image = UIImage.imageNamed("share")
       end
 
+      def on_select(tableView, tableViewDelegate)
+        super
+        Flurry.logEvent("SHARE_TAPPED")
+      end
+
     end
   end
 end

@@ -14,7 +14,11 @@ module Formotion
           subject: row.value[:subject],
           message: "",
           animated: true
-        })
+        }) do |result, error|
+          Flurry.logEvent("EMAIL_SENT") if result.sent?
+          Flurry.logEvent("EMAIL_CANCELED") if result.canceled?
+          Flurry.logEvent("EMAIL_FAILED") if result.failed?
+        end
       end
 
     end

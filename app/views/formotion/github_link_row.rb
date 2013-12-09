@@ -7,6 +7,11 @@ module Formotion
         cell.imageView.image = UIImage.imageNamed("github")
       end
 
+      def on_select(tableView, tableViewDelegate)
+        super
+        Flurry.logEvent("GITHUB_TAPPED")
+      end
+
     end
   end
 end
