@@ -63,7 +63,7 @@ class TextiesViewController < UICollectionViewController
         NSLog "Got valid result from #{App.name} server."
         if new_count > old_count
           NSLog "Got #{new_count - old_count} new texties."
-          App.alert("New #{App.name} added!", "We just added #{new_count - old_count} new #{App.name}!\nEnjoy!")
+          App.alert("New #{App.name} added:", message: "We just added #{new_count - old_count} new #{App.name}!\nEnjoy!")
         end
 
         init_data
