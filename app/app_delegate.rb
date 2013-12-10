@@ -41,7 +41,7 @@ class AppDelegate
       launch: 30,
       title: "Have You Shared #{App.name} Yet?",
       message: "You've been using #{App.name} a lot!\n\nWant to share the app with some friends? We'd love you forever!",
-      action: Proc.new{ App.delegate.view_controller.show_info(nil) },
+      action: Proc.new{ App.delegate.view_controller.show_about },
       buttons: ["No Thanks", "OK"]
     )
     messages.takeoff
