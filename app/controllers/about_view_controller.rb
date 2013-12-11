@@ -12,29 +12,34 @@ class AboutViewController < Formotion::FormController
           title: "Share the app",
           subtitle: "Text, Email, Tweet, or Facebook!",
           type: :share,
+          image: "share",
           value: {
             items: "I'm using the #{App.name} app to send cool text art. Check it out! http://www.textiesapp.com/",
             excluded: TextieUtils.excluded_services
           }
         },{
           title: "Rate #{App.name} on iTunes",
-          type: :rate_itunes
+          type: :rate_itunes,
+          image: "itunes"
         }]
       }, {
         title: "#{App.name} is open source:",
         rows: [{
           title: "View on GitHub",
           type: :github_link,
+          image: "github",
           value: "https://github.com/MohawkApps/Texties"
         }, {
           title: "Found a bug?",
           subtitle: "Log it here.",
           type: :issue_link,
+          image: "issue",
           value: "https://github.com/MohawkApps/Texties/issues/"
         }, {
           title: "Email me suggestions!",
           subtitle: "I'd love to hear from you",
           type: :email_me,
+          image: "email",
           value: {
             to: "mark@mohawkapps.com",
             subject: "Texties App Feedback"
@@ -58,22 +63,15 @@ class AboutViewController < Formotion::FormController
           type: :web_link,
           value: "http://www.mohawkapps.com"
         }, {
-          title: "Made with ♥ in North Carolina",
+          title: "Made in North Carolina",
           type: :static,
           enabled: false,
-          selection_style: :none
-        }, {
-          type: :map,
-          value: {
-            coord: north_carolina,
-            enabled: false,
-            animated: false,
-            pin: {
-              coord: charlotte
-            }
-          },
-          row_height: 200,
-          selection_style: :none
+          selection_style: :none,
+          text_alignment: NSTextAlignmentCenter
+        },{
+          type: :static_image,
+          value: "nc",
+          # row_height: 40
         }]
       }]
     })
