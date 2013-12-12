@@ -1,10 +1,6 @@
 class AboutViewController < Formotion::FormController
 
   def init
-    north_carolina_coords = CLLocationCoordinate2D.new(35.244140625, -79.8046875)
-    north_carolina = CLCircularRegion.alloc.initWithCenter(north_carolina_coords, radius:225093, identifier:"North Carolina")
-    charlotte = CLLocationCoordinate2D.new(35.2269444, -80.8433333)
-
     form = Formotion::Form.new({
       sections: [{
         title: "Tell Your friends:",
