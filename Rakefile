@@ -13,14 +13,17 @@ Motion::Project::App.setup do |app|
   app.interface_orientations = [:portrait, :portrait_upside_down]
   app.identifier = 'com.mohawkapps.texties'
   app.seed_id = 'DW9QQZR4ZL'
-  app.version = "1"
-  app.short_version = "1.0.0"
+  app.version = "2"
+  app.short_version = "1.0.1"
   app.icons = Dir.glob("resources/Icon*.png").map{|icon| icon.split("/").last}
   app.prerendered_icon = true
   app.info_plist['APP_STORE_ID'] = 769404785
   app.entitlements['keychain-access-groups'] = [
     app.seed_id + '.' + app.identifier
   ]
+
+  # app.archs['iPhoneOS'] << 'arm64'
+  # app.archs['iPhoneSimulator'] << 'x86_64'
 
   app.pods do
     pod 'UIActionSheet+Blocks'
@@ -39,9 +42,6 @@ Motion::Project::App.setup do |app|
     app.codesign_certificate = "iPhone Developer: Mark Rickert (YA2VZGDX4S)"
     app.provisioning_profile = "./provisioning/TextiesDevelopment.mobileprovision"
     app.testflight.identify_testers = true
-    # app.pods do
-    #   pod "Reveal-iOS-SDK"
-    # end
   end
 
   app.release do
