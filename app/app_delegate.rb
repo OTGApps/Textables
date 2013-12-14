@@ -33,18 +33,18 @@ class AppDelegate
   end
 
   def applicationDidBecomeActive(application)
-    messages = Takeoff::Messages.new
-    messages.schedule launch:1, title:"Welcome to #{App.name}!", message:"#{App.name} is a fun way to share unique text artwork with your friends!\n\nTap a Textie to get started!"
-    messages.schedule launch:5, title:"Quick Tip:", message:"If you favorite a Textie, it adds it to the top of this screen!"
-    messages.schedule launch:10, title:"Crazy Text".kanjify, message:"Tap the " << "crazy".kanjify << " button to create your own crazy text and send to friends!"
-    messages.schedule(
+    @messages ||= Takeoff::Messages.new
+    @messages.schedule launch:1, title:"Welcome to #{App.name}!", message:"#{App.name} is a fun way to share unique text artwork with your friends!\n\nTap a Textie to get started!"
+    @messages.schedule launch:5, title:"Quick Tip:", message:"If you favorite a Textie, it adds it to the top of this screen!"
+    @messages.schedule launch:10, title:"Crazy Text".kanjify, message:"Tap the " << "crazy".kanjify << " button to create your own crazy text and send to friends!"
+    @messages.schedule(
       launch: 30,
       title: "Have You Shared #{App.name} Yet?",
       message: "You've been using #{App.name} a lot!\n\nWant to share the app with some friends? We'd love you forever!",
       action: Proc.new{ App.delegate.view_controller.show_about },
       buttons: ["No Thanks", "OK"]
     )
-    messages.takeoff
+    @messages.takeoff
 
     Takeoff::Reminders.reset
     Appirater.appEnteredForeground(true) unless Device.simulator?
