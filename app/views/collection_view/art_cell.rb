@@ -2,16 +2,17 @@ class ArtCell < UICollectionViewCell
 
   def favorite= bool
     @favorite_star.image = bool ? UIImage.imageNamed("star-highlighted") : UIImage.imageNamed("star")
+    @is_favorite = bool
+  end
+
+  def favorite?
+    @is_favorite
   end
 
   def art= ascii_object
     @art = ascii_object
     @art_label.text = ascii_object.art
     @title_label.text = ascii_object.name
-  end
-
-  def art
-    @art
   end
 
   def initWithFrame frame
@@ -70,5 +71,18 @@ class ArtCell < UICollectionViewCell
     @art_label.text = ""
     @title_label.text = ""
   end
+
+  def art
+    @art
+  end
+
+  def title_label
+    @title_label
+  end
+
+  def art_label
+    @art_label
+  end
+
 
 end

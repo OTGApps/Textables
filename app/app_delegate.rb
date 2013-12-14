@@ -3,6 +3,8 @@ class AppDelegate
   attr_accessor :window, :view_controller
 
   def application(application, didFinishLaunchingWithOptions:launchOptions)
+    return true if RUBYMOTION_ENV == 'test'
+
     # 3rd Party integrations
     unless Device.simulator?
       app_id = NSBundle.mainBundle.objectForInfoDictionaryKey('APP_STORE_ID')

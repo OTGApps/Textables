@@ -14,4 +14,8 @@ class SectionHeader < UICollectionReusableView
     end
   end
 
+  def display_label
+    @display_label
+  end
+
 end
