@@ -4,7 +4,7 @@ module Formotion
 
       def on_select(tableView, tableViewDelegate)
         Appirater.rateApp
-        Flurry.logEvent("RATE_ITUNES_TAPPED")
+        Flurry.logEvent("RATE_ITUNES_TAPPED") unless Device.simulator?
       end
 
     end

@@ -60,7 +60,7 @@ class TextiesViewController < UICollectionViewController
         TextiesData.sharedData.cleanup
         new_count = TextiesData.sharedData.texties_count
 
-        Flurry.logEvent("API_HIT", withParameters:{old_count: old_count, new_count: new_count})
+        Flurry.logEvent("API_HIT", withParameters:{old_count: old_count, new_count: new_count}) unless Device.simulator?
         NSLog "Got valid result from #{App.name} server. Old:#{old_count} New:#{new_count}"
         if new_count > old_count
           NSLog "Got #{new_count - old_count} new texties."
@@ -81,7 +81,7 @@ class TextiesViewController < UICollectionViewController
   end
 
   def show_about
-    Flurry.logEvent("SHOW_ABOUT")
+    Flurry.logEvent("SHOW_ABOUT") unless Device.simulator?
     about_vc = AboutViewController.alloc.init
     nav_controller = UINavigationController.alloc.initWithRootViewController(about_vc)
     self.presentViewController(nav_controller, animated:true, completion:nil)
@@ -253,13 +253,13 @@ class TextiesViewController < UICollectionViewController
   end
 
   def copy_to_clipboard selected
-    Flurry.logEvent("COPY", withParameters:{art: selected})
+    Flurry.logEvent("COPY", withParameters:{art: selected}) unless Device.simulator?
     UIPasteboard.generalPasteboard.setString(selected)
   end
 
   def pick_and_send selected
     items = [selected]
-    Flurry.logEvent("SHARE", withParameters:{art: selected})
+    Flurry.logEvent("SHARE", withParameters:{art: selected}) unless Device.simulator?
 
     activity_vc = UIActivityViewController.alloc.initWithActivityItems(items, applicationActivities:nil)
     activity_vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical
@@ -316,7 +316,7 @@ class TextiesViewController < UICollectionViewController
 
   def didReceiveMemoryWarning
     super
-    Flurry.logEvent("MEMORY_WARNING")
+    Flurry.logEvent("MEMORY_WARNING") unless Device.simulator?
   end
 
 end
