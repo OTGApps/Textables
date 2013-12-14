@@ -1,7 +1,7 @@
 class AboutViewController < Formotion::FormController
 
   def init
-    form = Formotion::Form.new({
+    @form ||= Formotion::Form.new({
       sections: [{
         title: "Tell Your friends:",
         rows: [{
@@ -69,11 +69,10 @@ class AboutViewController < Formotion::FormController
           value: "nc",
           enabled: false,
           selection_style: :none
-          # row_height: 40
         }]
       }]
     })
-    super.initWithForm(form)
+    super.initWithForm(@form)
   end
 
   def viewDidLoad
