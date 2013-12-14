@@ -59,7 +59,7 @@ class AboutViewController < Formotion::FormController
           type: :web_link,
           value: "http://www.mohawkapps.com"
         }, {
-          title: "Made in North Carolina",
+          title: "Made with ♥ in North Carolina",
           type: :static,
           enabled: false,
           selection_style: :none,
@@ -67,6 +67,8 @@ class AboutViewController < Formotion::FormController
         },{
           type: :static_image,
           value: "nc",
+          enabled: false,
+          selection_style: :none
           # row_height: 40
         }]
       }]
