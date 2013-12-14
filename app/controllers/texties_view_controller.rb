@@ -44,7 +44,7 @@ class TextiesViewController < UICollectionViewController
 
   def needs_textification
     # Don't check the server if the launch count is under 2
-    return false if App::Persistence['motion_takeoff_launch_count'] < 2
+    return false if App::Persistence['motion_takeoff_launch_count'] < 2 && !Device.simulator?
 
     time = (Device.simulator?) ? 2.seconds.ago.to_i : 2.days.ago.to_i
     App::Persistence['last_checked_texties'].nil? || time > App::Persistence['last_checked_texties']
@@ -117,6 +117,7 @@ class TextiesViewController < UICollectionViewController
       cell.art = art
       cell.favorite = Favorites.is_favorite? cell.art
       cell.backgroundColor = UIColor.colorWithRed(1.0, green:1.0, blue:1.0, alpha:0.8)
+      cell.opaque = true
     end
   end
 
