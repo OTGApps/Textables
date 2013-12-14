@@ -1,4 +1,4 @@
-# Texties 
+# Texties [![Build Status](https://travis-ci.org/MohawkApps/Texties.png?branch=master)](https://travis-ci.org/MohawkApps/Texties) [![Code Climate](https://codeclimate.com/github/MohawkApps/Texties.png)](https://codeclimate.com/github/MohawkApps/Texties)
 ![App Icon](https://raw.github.com/MohawkApps/Texties/master/resources/Icon-120.png)
 
 #### A [RubyMotion](http://www.rubymotion.com/) application brought to you by [Mohawk Apps](http://www.mohawkapps.com/).
