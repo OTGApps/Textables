@@ -50,9 +50,10 @@ class ArtCell < UICollectionViewCell
 
       star_size = 18
       @favorite_star = UIImageView.alloc.initWithImage(UIImage.imageNamed("star")).tap do |image|
+        star_padding = 3
         image.frame = CGRectMake(
-          CGRectGetMaxX(self.contentView.bounds) - star_size,
-          0,
+          CGRectGetMaxX(self.contentView.bounds) - star_size - star_padding,
+          star_padding,
           star_size,
           star_size
         )
