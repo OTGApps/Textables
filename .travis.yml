@@ -1,4 +1,4 @@
 language: objective-c
 gemfile:
   - Gemfile
-script: ./travis.sh
+script: bundle exec rake pod:install && bundle exec rake spec
