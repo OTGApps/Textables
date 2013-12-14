@@ -46,7 +46,7 @@ class TextiesViewController < UICollectionViewController
     # Don't check the server if the launch count is under 2
     return false if App::Persistence['motion_takeoff_launch_count'] < 2 && !Device.simulator?
 
-    time = (Device.simulator?) ? 2.seconds.ago.to_i : 2.days.ago.to_i
+    time = (Device.simulator?) ? 20.seconds.ago.to_i : 2.days.ago.to_i
     App::Persistence['last_checked_texties'].nil? || time > App::Persistence['last_checked_texties']
   end
 
