@@ -1,4 +1,6 @@
 language: objective-c
+rvm:
+  - 2.0.0
 gemfile:
   - Gemfile
 script: bundle exec rake spec
