@@ -1,5 +1,4 @@
 language: objective-c
-before_install: ruby --version
 gemfile:
   - Gemfile
-script: bundle exec rake spec
+script: ./travis.sh
