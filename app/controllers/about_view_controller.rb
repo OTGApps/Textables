@@ -32,13 +32,19 @@ class AboutViewController < Formotion::FormController
           title: "View on GitHub",
           type: :github_link,
           image: "github",
-          value: "https://github.com/MohawkApps/Texties"
+          value: {
+            warn: true,
+            url: "https://github.com/MohawkApps/Texties"
+          }
         }, {
           title: "Found a bug?",
           subtitle: "Log it here.",
           type: :issue_link,
           image: "issue",
-          value: "https://github.com/MohawkApps/Texties/issues/"
+          value: {
+            warn: true,
+            url: "https://github.com/MohawkApps/Texties/issues/"
+          }
         }, {
           title: "Email me suggestions!",
           subtitle: "I'd love to hear from you",
@@ -65,7 +71,10 @@ class AboutViewController < Formotion::FormController
         }, {
           title: "Visit MohawkApps.com",
           type: :web_link,
-          value: "http://www.mohawkapps.com"
+          value: {
+            warn:true,
+            url: "http://www.mohawkapps.com"
+          }
         }, {
           title: "Made with ♥ in North Carolina",
           type: :static,
