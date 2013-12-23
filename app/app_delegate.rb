@@ -21,6 +21,9 @@ class AppDelegate
       Harpy.sharedInstance.checkVersion
     end
 
+    # Set the initial value to remind people. This must be turned off manually.
+    App::Persistence['show_notifications'] = true if App::Persistence['show_notifications'].nil?
+
     self.view_controller = TextiesViewController.alloc.initWithCollectionViewLayout(UICollectionViewFlowLayout.new)
     nav_controller = UINavigationController.alloc.initWithRootViewController(self.view_controller)
 
@@ -35,7 +38,7 @@ class AppDelegate
   end
 
   def applicationDidBecomeActive(application)
-    @messages ||= Takeoff::Messages.new
+    @messages = Takeoff::Messages.new
     @messages.schedule launch:1, title:"Welcome to #{App.name}!", message:"#{App.name} is a fun way to share unique text artwork with your friends!\n\nTap a Textie to get started!"
     @messages.schedule launch:5, title:"Quick Tip:", message:"If you favorite a Textie, it adds it to the top of this screen!"
     @messages.schedule launch:10, title:"Crazy Text".kanjify, message:"Tap the " << "crazy".kanjify << " button to create your own crazy text and send to friends!"
@@ -54,6 +57,8 @@ class AppDelegate
 
   def applicationDidEnterBackground(application)
     # Schedule a bunch of reminders to use the app.
+    return if App::Persistence['show_notifications'] == false
+
     (1..3).to_a.each do |interval|
       message = "You haven't sent a Textie in #{interval} week"
 

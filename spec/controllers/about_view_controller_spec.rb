@@ -7,10 +7,6 @@ describe "AboutViewController" do
     @nav_controller = UINavigationController.alloc.initWithRootViewController(@vc)
   end
 
-  it "is a subclass of formmotion" do
-    @vc.superclass.should == Formotion::FormController
-  end
-
   it "sets the title" do
     @vc.title.should == "About"
   end

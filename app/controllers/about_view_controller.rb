@@ -1,8 +1,16 @@
 class AboutViewController < Formotion::FormController
+  include BW::KVO
 
   def init
     @form ||= Formotion::Form.new({
       sections: [{
+        title: "Settings:",
+        rows: [{
+          title: "Remind me to use #{App.name}",
+          type: :switch,
+          value: App::Persistence['show_notifications']
+        }]
+      },{
         title: "Tell Your friends:",
         rows: [{
           title: "Share the app",
@@ -79,10 +87,18 @@ class AboutViewController < Formotion::FormController
     super
     self.title = "About"
     self.navigationItem.rightBarButtonItem = UIBarButtonItem.alloc.initWithBarButtonSystemItem(UIBarButtonSystemItemStop, target:self, action:"close")
+    observe_switch
   end
 
   def close
     dismissModalViewControllerAnimated(true)
+  end
+
+  def observe_switch
+    row = @form.sections[0].rows[0]
+    observe(row, "value") do |old_value, new_value|
+      App::Persistence['show_notifications'] = new_value
+    end
   end
 
 end
