@@ -7,14 +7,14 @@ Bundler.require
 
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
-  app.name = 'Texties'
+  app.name = 'Textables'
   app.deployment_target = "7.0"
   app.device_family = [:iphone]
   app.interface_orientations = [:portrait, :portrait_upside_down]
   app.identifier = 'com.mohawkapps.texties'
   app.seed_id = 'DW9QQZR4ZL'
-  app.version = "3"
-  app.short_version = "1.0.2"
+  app.version = "4"
+  app.short_version = "1.1.0"
   app.icons = Dir.glob("resources/Icon*.png").map{|icon| icon.split("/").last}
   app.prerendered_icon = true
   app.info_plist['APP_STORE_ID'] = 769404785
@@ -40,14 +40,14 @@ Motion::Project::App.setup do |app|
   app.development do
     app.entitlements['get-task-allow'] = true
     app.codesign_certificate = "iPhone Developer: Mark Rickert (YA2VZGDX4S)"
-    app.provisioning_profile = "./provisioning/TextiesDevelopment.mobileprovision"
+    app.provisioning_profile = "./provisioning/TextablesDevelopment.mobileprovision"
     app.testflight.identify_testers = true
   end
 
   app.release do
     app.entitlements['get-task-allow'] = false
     app.codesign_certificate = "iPhone Distribution: Mohawk Apps, LLC (DW9QQZR4ZL)"
-    app.provisioning_profile = "./provisioning/TextiesDistribution.mobileprovision"
+    app.provisioning_profile = "./provisioning/TextablesDistribution.mobileprovision"
     app.testflight.identify_testers = false
   end
 end

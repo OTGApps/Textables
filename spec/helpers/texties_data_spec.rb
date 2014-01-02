@@ -1,4 +1,4 @@
-describe "TextiesData" do
+describe "TextablesData" do
 
   # TODO: Write tests
 

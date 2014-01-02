@@ -18,8 +18,8 @@ class AboutViewController < Formotion::FormController
           type: :share,
           image: "share",
           value: {
-            items: "I'm using the #{App.name} app to send cool text art. Check it out! http://www.textiesapp.com/",
-            excluded: TextieUtils.excluded_services
+            items: "I'm using the #{App.name} app to send cool text art. Check it out! http://www.mohawkapps.com/app/textables/",
+            excluded: TextablesUtils.excluded_services
           }
         },{
           title: "Rate #{App.name} on iTunes",
@@ -32,19 +32,15 @@ class AboutViewController < Formotion::FormController
           title: "View on GitHub",
           type: :github_link,
           image: "github",
-          value: {
-            warn: true,
-            url: "https://github.com/MohawkApps/Texties"
-          }
+          warn: true,
+          value: "https://github.com/MohawkApps/Textables"
         }, {
           title: "Found a bug?",
           subtitle: "Log it here.",
           type: :issue_link,
           image: "issue",
-          value: {
-            warn: true,
-            url: "https://github.com/MohawkApps/Texties/issues/"
-          }
+          warn: true,
+          value: "https://github.com/MohawkApps/Textables/issues/"
         }, {
           title: "Email me suggestions!",
           subtitle: "I'd love to hear from you",
@@ -52,11 +48,11 @@ class AboutViewController < Formotion::FormController
           image: "email",
           value: {
             to: "mark@mohawkapps.com",
-            subject: "Texties App Feedback"
+            subject: "#{App.name} App Feedback"
           }
         }]
       }, {
-        title: "About Texties:",
+        title: "About #{App.name}:",
         rows: [{
           title: "Version",
           type: :static,
@@ -71,10 +67,8 @@ class AboutViewController < Formotion::FormController
         }, {
           title: "Visit MohawkApps.com",
           type: :web_link,
-          value: {
-            warn:true,
-            url: "http://www.mohawkapps.com"
-          }
+          warn: false,
+          value: "http://www.mohawkapps.com"
         }, {
           title: "Made with ♥ in North Carolina",
           type: :static,

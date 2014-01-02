@@ -24,7 +24,7 @@ class AppDelegate
     # Set the initial value to remind people. This must be turned off manually.
     App::Persistence['show_notifications'] = true if App::Persistence['show_notifications'].nil?
 
-    self.view_controller = TextiesViewController.alloc.initWithCollectionViewLayout(UICollectionViewFlowLayout.new)
+    self.view_controller = TextablesViewController.alloc.initWithCollectionViewLayout(UICollectionViewFlowLayout.new)
     nav_controller = UINavigationController.alloc.initWithRootViewController(self.view_controller)
 
     self.window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)

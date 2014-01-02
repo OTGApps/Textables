@@ -1,10 +1,10 @@
-describe "TextiesViewController" do
-  tests TextiesViewController
+describe "TextablesViewController" do
+  tests TextablesViewController
 
   def controller
     rotate_device to: :portrait, button: :bottom
     App::Persistence['favorites'] = nil
-    @vc = TextiesViewController.alloc.initWithCollectionViewLayout(UICollectionViewFlowLayout.new)
+    @vc = TextablesViewController.alloc.initWithCollectionViewLayout(UICollectionViewFlowLayout.new)
     @nav_controller = UINavigationController.alloc.initWithRootViewController(@vc)
   end
 
