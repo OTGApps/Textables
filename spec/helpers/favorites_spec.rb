@@ -2,7 +2,7 @@ describe "Favorites" do
 
   before do
     App::Persistence['favorites'] = nil
-    @art = ASCIIArt.new(art: "Art", name: "Name")
+    @art = {art: "Art", name: "Name"}
   end
 
   it "returns a count of favorites" do
@@ -12,7 +12,7 @@ describe "Favorites" do
   it "saves a favorite" do
     Favorites.favorite @art
     Favorites.count.should == 1
-    Favorites.count.should == Favorites.all_raw.count
+    Favorites.count.should == Favorites.all.count
   end
 
   it "removes a favorite" do

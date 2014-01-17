@@ -19,17 +19,17 @@ describe "ArtCell" do
   end
 
   it "should set the art label" do
-    @cell.art = ASCIIArt.new(art:"Art", name:"Title")
+    @cell.art = {art:"Art", name:"Title"}
     @cell.art_label.text.should == "Art"
   end
 
   it "should set the title label" do
-    @cell.art = ASCIIArt.new(art:"Art", name:"Title")
+    @cell.art = {art:"Art", name:"Title"}
     @cell.title_label.text.should == "Title"
   end
 
   it "should return an art object when asked" do
-    a = ASCIIArt.new(art:"Art", name:"Title")
+    a = {art:"Art", name:"Title"}
     @cell.art = a
     @cell.art.should == a
   end
