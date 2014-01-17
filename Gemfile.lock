@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/markrickert/formotion.git
-  revision: 30e32cbde07350ce723c2485578e89e3fc8ed421
+  revision: 317dd32bfcc4b78638111b629486abe211460c29
   branch: texties
   specs:
     formotion (1.6)
@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: git://github.com/rubymotion/BubbleWrap.git
-  revision: 035e39d54c4352da6ee9ea2516c53b24dda97a65
+  revision: 117bdbf3894e95d77a6e86f98fd52be5ee0e0c38
   specs:
     bubble-wrap (1.4.0)
 
@@ -59,7 +59,7 @@ GEM
     motion-require (0.0.7)
     motion-takeoff (0.0.5)
       bubble-wrap (> 1.0.0)
-    multi_json (1.8.2)
+    multi_json (1.8.4)
     nap (0.6.0)
     open4 (1.3.0)
     rake (10.1.1)
