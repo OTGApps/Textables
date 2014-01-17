@@ -90,7 +90,7 @@ class TextablesViewController < UICollectionViewController
   def favorites
     favs = {}
     favs["category"] = "Favorites"
-    favs["items"] = Favorites.all_raw
+    favs["items"] = Favorites.all
     favs
   end
 
@@ -101,7 +101,7 @@ class TextablesViewController < UICollectionViewController
   end
 
   def show_favorites?
-    Favorites.all_raw.count > 0
+    Favorites.all.count > 0
   end
 
   def collectionView(view, numberOfItemsInSection:section)
