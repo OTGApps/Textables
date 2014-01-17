@@ -7,7 +7,7 @@ class AppDelegate
 
     # 3rd Party integrations
     unless Device.simulator?
-      app_id = NSBundle.mainBundle.objectForInfoDictionaryKey('APP_STORE_ID')
+      app_id = App.info_plist['APP_STORE_ID']
 
       # Flurry
       NSSetUncaughtExceptionHandler("uncaughtExceptionHandler")
