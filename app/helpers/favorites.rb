@@ -18,14 +18,12 @@ class Favorites
   end
 
   def self.is_favorite? art
-    ap "Is favorite? #{art} - #{Favorites.all.include? art.to_dict}" if BW.debug?
-    art = art.to_dict unless art.is_a? Hash
+    ap "Is favorite? #{art} - #{Favorites.all.include? art}" if BW.debug?
     Favorites.all.include? art
   end
 
   def self.favorite art
-    ap "Setting favorite: #{art.art}" if BW.debug?
-    art = art.to_dict unless art.is_a? Hash
+    ap "Setting favorite: #{art}" if BW.debug?
     Flurry.logEvent("FAVORITE", withParameters:{art: art["art"]}) unless Device.simulator?
     favs = Favorites.all.mutableCopy
     favs << art
@@ -33,10 +31,9 @@ class Favorites
   end
 
   def self.unfavorite art
-    ap "Removing favorite: #{art.to_dict}" if BW.debug?
+    ap "Removing favorite: #{art}" if BW.debug?
     favs = Favorites.all.mutableCopy
     Flurry.logEvent("UNFAVORITE", withParameters:{art: art["art"]}) unless Device.simulator?
-    art = art.to_dict unless art.is_a? Hash
     favs.reject!{|ascii| ascii["art"] == art[:art] && ascii["name"] == art[:name]}
     App::Persistence['favorites'] = favs
   end
