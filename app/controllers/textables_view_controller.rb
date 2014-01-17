@@ -245,10 +245,10 @@ class TextablesViewController < UICollectionViewController
         self.collectionView.deleteItemsAtIndexPaths(favorites_instances)
       end
 
-    }, completion:lambda {|finished|
+    }.weak!, completion:lambda {|finished|
         all_instances = index_paths_for_art(art)
         self.collectionView.reloadItemsAtIndexPaths(all_instances)
-    })
+    }.weak!)
 
   end
 
@@ -286,7 +286,7 @@ class TextablesViewController < UICollectionViewController
       when 1
         prompt_for_upsidedown
       end
-    end
+    end.weak!
 
     as.showInView(self.view)
 
