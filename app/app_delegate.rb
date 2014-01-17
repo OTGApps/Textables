@@ -5,6 +5,8 @@ class AppDelegate
   def application(application, didFinishLaunchingWithOptions:launchOptions)
     return true if RUBYMOTION_ENV == 'test'
 
+    BW.debug = true unless App.info_plist['AppStoreRelease'] == true
+
     # 3rd Party integrations
     unless Device.simulator?
       app_id = App.info_plist['APP_STORE_ID']

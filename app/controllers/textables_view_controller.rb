@@ -126,12 +126,12 @@ class TextablesViewController < UICollectionViewController
     this_data = self.data if this_data.nil?
     art = art["art"] if art.is_a? Hash
 
-    # ap "Finding paths of art: #{art}"
+    ap "Finding paths of art: #{art}" if BW.debug?
     ips = []
     this_data.each_with_index do |section, s_idx|
       section["items"].each_with_index do |item, idx|
         if item["art"] == art
-          # ap "found: #{item['art']} at [#{idx},#{s_idx}]"
+          ap "found: #{item['art']} at [#{idx},#{s_idx}]" if BW.debug?
           ips << NSIndexPath.indexPathForRow(idx, inSection:s_idx)
         end
       end
@@ -215,7 +215,7 @@ class TextablesViewController < UICollectionViewController
   end
 
   def toggle_favorite art
-    # ap "Toggling favorite for #{art}"
+    ap "Toggling favorite for #{art}" if BW.debug?
     adding = Favorites.is_favorite? art
 
     old_count = Favorites.count

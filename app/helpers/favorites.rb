@@ -9,7 +9,7 @@ class Favorites
   end
 
   def self.toggle art
-    # ap "Toggling: #{art}"
+    ap "Toggling: #{art}" if BW.debug?
     if Favorites.is_favorite? art
       Favorites.unfavorite art
     else
@@ -18,13 +18,13 @@ class Favorites
   end
 
   def self.is_favorite? art
-    # ap "Is favorite? #{art} - #{Favorites.all.include? art.to_dict}"
+    ap "Is favorite? #{art} - #{Favorites.all.include? art.to_dict}" if BW.debug?
     art = art.to_dict unless art.is_a? Hash
     Favorites.all.include? art
   end
 
   def self.favorite art
-    # ap "Setting favorite: #{art.art}"
+    ap "Setting favorite: #{art.art}" if BW.debug?
     art = art.to_dict unless art.is_a? Hash
     Flurry.logEvent("FAVORITE", withParameters:{art: art["art"]}) unless Device.simulator?
     favs = Favorites.all.mutableCopy
@@ -33,7 +33,7 @@ class Favorites
   end
 
   def self.unfavorite art
-    # ap "Removing favorite: #{art.to_dict}"
+    ap "Removing favorite: #{art.to_dict}" if BW.debug?
     favs = Favorites.all.mutableCopy
     Flurry.logEvent("UNFAVORITE", withParameters:{art: art["art"]}) unless Device.simulator?
     art = art.to_dict unless art.is_a? Hash

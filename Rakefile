@@ -45,6 +45,7 @@ Motion::Project::App.setup do |app|
   end
 
   app.release do
+    app.info_plist['AppStoreRelease'] = true
     app.entitlements['get-task-allow'] = false
     app.codesign_certificate = "iPhone Distribution: Mohawk Apps, LLC (DW9QQZR4ZL)"
     app.provisioning_profile = "./provisioning/TextablesDistribution.mobileprovision"
