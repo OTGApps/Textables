@@ -109,13 +109,14 @@ class TextablesViewController < UICollectionViewController
   end
 
   def collectionView(clv, cellForItemAtIndexPath:index_path)
+    art = {
+      art: self.data[index_path.section]["items"][index_path.row]["art"],
+      name: self.data[index_path.section]["items"][index_path.row]["name"]
+    }
+
     clv.dequeueReusableCellWithReuseIdentifier(CELL_IDENTIFIER, forIndexPath:index_path).tap do |cell|
-      art = ASCIIArt.new(
-        art: self.data[index_path.section]["items"][index_path.row]["art"] || "",
-        name: self.data[index_path.section]["items"][index_path.row]["name"] || ""
-      )
       cell.art = art
-      cell.favorite = Favorites.is_favorite? cell.art
+      cell.favorite = Favorites.is_favorite? art
       cell.backgroundColor = UIColor.colorWithRed(1.0, green:1.0, blue:1.0, alpha:0.8)
       cell.opaque = true
     end

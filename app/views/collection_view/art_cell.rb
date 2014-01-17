@@ -9,10 +9,10 @@ class ArtCell < UICollectionViewCell
     @is_favorite
   end
 
-  def art= ascii_object
-    @art = ascii_object
-    @art_label.text = ascii_object.art
-    @title_label.text = ascii_object.name
+  def art= art_object
+    @art = art_object
+    @art_label.text = art_object[:art]
+    @title_label.text = art_object[:name]
   end
 
   def initWithFrame frame
@@ -67,6 +67,7 @@ class ArtCell < UICollectionViewCell
   end
 
   def prepareForReuse
+
     @art = nil
     @art_label.text = ""
     @title_label.text = ""
