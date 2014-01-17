@@ -9,6 +9,7 @@ gem 'bubble-wrap', :github => 'rubymotion/BubbleWrap', :require => ['bubble-wrap
 gem 'formotion', :github => 'markrickert/formotion', :branch => 'texties'
 # gem 'formotion', :path => '../formotion'
 gem 'motion-takeoff'#, :path => '../motion-takeoff'
+gem 'motion-blitz'
 
 # Rubygems
 gem "rake", '>= 0.9.4'

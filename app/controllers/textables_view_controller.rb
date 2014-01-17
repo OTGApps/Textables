@@ -256,6 +256,7 @@ class TextablesViewController < UICollectionViewController
   def copy_to_clipboard selected
     Flurry.logEvent("COPY", withParameters:{art: selected}) unless Device.simulator?
     UIPasteboard.generalPasteboard.setString(selected)
+    Motion::Blitz.success("Copied!")
   end
 
   def pick_and_send selected

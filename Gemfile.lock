@@ -52,6 +52,8 @@ GEM
     fuzzy_match (2.0.4)
     i18n (0.6.9)
     json_pure (1.8.1)
+    motion-blitz (1.0.1)
+      motion-cocoapods (>= 1.4.0)
     motion-cocoapods (1.4.0)
       cocoapods (>= 0.26.2)
     motion-require (0.0.7)
@@ -74,6 +76,7 @@ DEPENDENCIES
   bubble-wrap!
   cocoapods
   formotion!
+  motion-blitz
   motion-cocoapods
   motion-takeoff
   motion-testflight!
