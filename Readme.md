@@ -20,8 +20,9 @@ This app is open source. Browse the source code here: https://github.com/MohawkA
 
 1. You must have a valid license of RubyMotion.
 2. Run `bundle`
-3. Run `rake`
-4. The simulator should launch automatically.
+3. Run `rake pod:install`
+4. Run `rake`
+5. The simulator should launch automatically.
 
 *Some features - like iMessage sending requires that you run it on an actual device. Building RubyMotion apps to a device is out of  the scope of this readme.*
 
