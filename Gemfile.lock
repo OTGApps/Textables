@@ -14,9 +14,8 @@ GIT
       bubble-wrap (~> 1.4.0)
       motion-require (~> 0.0.3)
 
-GIT
-  remote: git://github.com/rubymotion/BubbleWrap.git
-  revision: 117bdbf3894e95d77a6e86f98fd52be5ee0e0c38
+PATH
+  remote: ../BubbleWrap
   specs:
     bubble-wrap (1.4.0)
 

@@ -5,7 +5,7 @@ gem "motion-cocoapods"
 gem "cocoapods"
 
 # RubyMotion
-gem 'bubble-wrap', :github => 'rubymotion/BubbleWrap', :require => ['bubble-wrap/core', 'bubble-wrap/http', 'bubble-wrap/mail']
+gem 'bubble-wrap', path: '../BubbleWrap', :require => ['bubble-wrap/core', 'bubble-wrap/http', 'bubble-wrap/mail']
 gem 'formotion', :github => 'markrickert/formotion', :branch => 'texties'
 # gem 'formotion', :path => '../formotion'
 gem 'motion-takeoff'#, :path => '../motion-takeoff'

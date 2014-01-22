@@ -260,14 +260,15 @@ class TextablesViewController < UICollectionViewController
   end
 
   def pick_and_send selected
-    items = [selected]
     Flurry.logEvent("SHARE", withParameters:{art: selected}) unless Device.simulator?
 
-    activity_vc = UIActivityViewController.alloc.initWithActivityItems(items, applicationActivities:nil)
-    activity_vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical
-    activity_vc.excludedActivityTypes = TextablesUtils.excluded_services
+    activity_vc = BW::UIActivityViewController.new(
+      items: selected,
+      excluded: TextablesData.excluded_services
+    ) do |activity_type, completed|
+      ap "completed dialog - activity: #{activity_type} - finished flag: #{completed}"
+    end
 
-    self.presentViewController(activity_vc, animated:true, completion:nil)
   end
 
   def crazy_text sender
