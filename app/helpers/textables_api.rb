@@ -1,20 +1,21 @@
 class TextablesAPI
 
-  APIURL = "https://raw.github.com/MohawkApps/Textables/master/resources/content.json"
+  API_URL = "https://raw.github.com/MohawkApps/Textables/master/resources/content.json"
 
   def self.textify(&block)
 
-    BW::HTTP.get(APIURL) do |response|
-        text = nil
-        error = nil
+    AFMotion::JSON.get(API_URL) do |result|
+      ap result.error.localizedDescription if BW.debug?
+      text = nil
+      error = nil
 
-        if response.ok?
-          text = response.body.to_str
-        else
-          error = {error: "sorry"}
-        end
+      if result.success?
+        text = result.body.to_str
+      else
+        error = {error: "sorry"}
+      end
 
-        block.call text, error
+      block.call text, error
     end
   end
 

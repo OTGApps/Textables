@@ -1,18 +1,18 @@
 source "https://rubygems.org"
 
 # Cocoapods
-gem "motion-cocoapods"
-gem "cocoapods"
+gem 'motion-cocoapods'
+gem 'cocoapods'
 
 # RubyMotion
-gem 'bubble-wrap', path: '../BubbleWrap', :require => ['bubble-wrap/core', 'bubble-wrap/http', 'bubble-wrap/mail']
+gem 'afmotion', '~> 2.0.0'
+gem 'bubble-wrap', :github => 'rubymotion/BubbleWrap', :require => ['bubble-wrap/core', 'bubble-wrap/mail']
 gem 'formotion', :github => 'markrickert/formotion', :branch => 'texties'
-# gem 'formotion', :path => '../formotion'
-gem 'motion-takeoff'#, :path => '../motion-takeoff'
-gem 'motion-blitz'
+gem 'motion-takeoff'
+gem 'motion-blitz' # Wrapper gem for SVProgressHUD
 
 # Rubygems
-gem "rake", '>= 0.9.4'
+gem 'rake', '>= 0.9.4'
 
 # Testflight
 gem 'motion-testflight', :github => 'hboon/motion-testflight', :branch => 'takeoff-on-launch-only'

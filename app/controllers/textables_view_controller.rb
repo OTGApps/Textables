@@ -52,9 +52,15 @@ class TextablesViewController < UICollectionViewController
 
   def fetch_data
     # Fetch and save the data locally.
+    ap "Fetching new data from the server" if BW.debug?
+
     old_count = TextablesData.sharedData.textables_count
     TextablesAPI.textify do |text, error|
+      ap "error: #{error}, text: #{text}" if BW.debug?
+
       if error.nil? && text[0] == "["
+        ap "Saving Data file to filesystem." if BW.debug?
+
         File.open(TextablesData.sharedData.documents, 'w') { |file| file.write(text) }
         App::Persistence['last_checked_texties'] = Time.now.to_i
         TextablesData.sharedData.cleanup
