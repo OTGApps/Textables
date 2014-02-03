@@ -60,6 +60,8 @@ class ArtCell < UICollectionViewCell
         )
         self.contentView.addSubview(image)
       end
+      self.contentView.backgroundColor = "#cdf5eb".to_color
+      self.contentView.opaque = true
 
       layer.cornerRadius = 10
       layer.masksToBounds = true

@@ -123,8 +123,6 @@ class TextablesViewController < UICollectionViewController
     clv.dequeueReusableCellWithReuseIdentifier(CELL_IDENTIFIER, forIndexPath:index_path).tap do |cell|
       cell.art = art
       cell.favorite = Favorites.is_favorite? art
-      cell.backgroundColor = UIColor.colorWithRed(1.0, green:1.0, blue:1.0, alpha:0.8)
-      cell.opaque = true
     end
   end
 
