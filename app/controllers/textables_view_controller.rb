@@ -266,12 +266,20 @@ class TextablesViewController < UICollectionViewController
   def pick_and_send selected
     Flurry.logEvent("SHARE", withParameters:{art: selected}) unless Device.simulator?
 
-    activity_vc = BW::UIActivityViewController.new(
-      items: selected,
-      excluded: TextablesData.excluded_services
-    ) do |activity_type, completed|
-      ap "completed dialog - activity: #{activity_type} - finished flag: #{completed}"
-    end
+    activity_vc = UIActivityViewController.alloc.initWithActivityItems([selected], applicationActivities:nil)
+    activity_vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical
+    activity_vc.excludedActivityTypes = TextablesData.excluded_services
+    self.presentViewController(activity_vc, animated:true, completion:nil)
+
+    # Switch to this once this pull request is integrated into BubbleWrap:
+    # https://github.com/rubymotion/BubbleWrap/pull/335
+    #
+    # activity_vc = BW::UIActivityViewController.new(
+    #   items: selected,
+    #   excluded: TextablesData.excluded_services
+    # ) do |activity_type, completed|
+    #   ap "Completed dialog - activity: #{activity_type} - finished flag: #{completed}" if BW.debug?
+    # end
 
   end
 

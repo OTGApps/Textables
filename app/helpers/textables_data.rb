@@ -1,8 +1,17 @@
 class TextablesData
 
   def self.excluded_services
-    [:add_to_reading_list, :air_drop, :copy_to_pasteboard,:print]
+    [
+      UIActivityTypeAddToReadingList,
+      UIActivityTypeAirDrop,
+      UIActivityTypeCopyToPasteboard,
+      UIActivityTypePrint
+    ]
   end
+
+  # def self.excluded_services
+  #   [:add_to_reading_list, :air_drop, :copy_to_pasteboard,:print]
+  # end
 
   def self.sharedData
     Dispatch.once { @instance ||= new }
