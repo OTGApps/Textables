@@ -13,8 +13,8 @@ Motion::Project::App.setup do |app|
   app.interface_orientations = [:portrait, :portrait_upside_down]
   app.identifier = 'com.mohawkapps.texties'
   app.seed_id = 'DW9QQZR4ZL'
-  app.version = "5"
-  app.short_version = "1.1.1"
+  app.version = '6'
+  app.short_version = '1.1.2'
   app.icons = Dir.glob("resources/Icon*.png").map{|icon| icon.split("/").last}
   app.prerendered_icon = true
   app.info_plist['APP_STORE_ID'] = 769404785
