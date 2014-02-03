@@ -61,15 +61,10 @@ class ArtCell < UICollectionViewCell
         self.contentView.addSubview(image)
       end
       self.contentView.backgroundColor = "#cdf5eb".to_color
-      self.contentView.opaque = true
-
-      layer.cornerRadius = 10
-      layer.masksToBounds = true
     end
   end
 
   def prepareForReuse
-
     @art = nil
     @art_label.text = ""
     @title_label.text = ""
@@ -86,6 +81,5 @@ class ArtCell < UICollectionViewCell
   def art_label
     @art_label
   end
-
 
 end
