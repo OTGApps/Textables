@@ -1,35 +1,40 @@
 class TextablesViewController < UICollectionViewController
   attr_accessor :data
 
-  HEADER_IDENTIFIER = "SectionHeader"
-  CELL_IDENTIFIER = "Package Cell"
-  CELL_WIDTH = 145
-  CELL_HEIGHT = 75
+  COLLECTION_CELL_ID = "ArtCell"
+  COLLECTION_HEADER_ID = "SectionHeader"
+
+  def self.new(args = {})
+    # Set layout
+    layout = UICollectionViewFlowLayout.alloc.init
+    self.alloc.initWithCollectionViewLayout(layout)
+  end
 
   def viewDidLoad
     super
+
     self.title = App.name
 
-    self.collectionView.registerClass(ArtCell, forCellWithReuseIdentifier:CELL_IDENTIFIER)
-    # Package Header Needs to be registered, too
-    self.collectionView.registerClass(SectionHeader, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HEADER_IDENTIFIER)
-    # THIS TRICKY PROPERTY MUST BE SET, OR DELEGATES AND ALL ARE IGNORED
-    self.collectionView.collectionViewLayout.headerReferenceSize = CGSizeMake(10.0, 30.0)
-    self.collectionView.collectionViewLayout.itemSize = CGSizeMake(CELL_WIDTH, CELL_HEIGHT)
+    rmq.stylesheet = TextablesStylesheet
 
-    self.collectionView.collectionViewLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10)
-    self.collectionView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0)
-    self.collectionView.backgroundColor = "#00CC99".to_color
+    collectionView.tap do |cv|
+      cv.registerClass(ArtCell, forCellWithReuseIdentifier: COLLECTION_CELL_ID)
+      cv.registerClass(SectionHeader, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: COLLECTION_HEADER_ID)
+      cv.delegate = self
+      cv.dataSource = self
+      cv.allowsSelection = true
+      cv.allowsMultipleSelection = false
+      rmq(cv).apply_style :collection_view
+    end
 
     # Info Button
-    info_image = UIImage.imageNamed "info"
-    info_button = UIBarButtonItem.alloc.initWithImage(info_image, style:UIBarButtonItemStylePlain, target:self, action:"show_about")
+    info_image = UIImage.imageNamed 'info'
+    info_button = UIBarButtonItem.alloc.initWithImage(info_image, style:UIBarButtonItemStylePlain, target:self, action:'show_about')
     self.navigationItem.rightBarButtonItem = info_button
 
     # Crazy Letters Button
-    crazy_letters_button = UIBarButtonItem.alloc.initWithTitle("crazy".kanjify, style:UIBarButtonItemStylePlain, target:self, action:"crazy_text:")
+    crazy_letters_button = UIBarButtonItem.alloc.initWithTitle('crazy'.kanjify, style:UIBarButtonItemStylePlain, target:self, action:'crazy_text:')
     self.navigationItem.leftBarButtonItem = crazy_letters_button
-
   end
 
   def viewWillAppear animated
@@ -39,15 +44,7 @@ class TextablesViewController < UICollectionViewController
 
   def viewDidAppear animated
     super
-    fetch_data if needs_textification
-  end
-
-  def needs_textification
-    # Don't check the server if the launch count is under 2
-    return false if App::Persistence['motion_takeoff_launch_count'] < 2 && !Device.simulator?
-
-    time = (Device.simulator?) ? 20.seconds.ago.to_i : 2.days.ago.to_i
-    App::Persistence['last_checked_texties'].nil? || time > App::Persistence['last_checked_texties']
+    fetch_data if TextablesData.needs_textification?
   end
 
   def fetch_data
@@ -110,22 +107,6 @@ class TextablesViewController < UICollectionViewController
     Favorites.all.count > 0
   end
 
-  def collectionView(view, numberOfItemsInSection:section)
-    self.data[section]["items"].reject{|i| i['name'] == "" }.count || 0
-  end
-
-  def collectionView(clv, cellForItemAtIndexPath:index_path)
-    art = {
-      art: self.data[index_path.section]["items"][index_path.row]["art"],
-      name: self.data[index_path.section]["items"][index_path.row]["name"]
-    }
-
-    clv.dequeueReusableCellWithReuseIdentifier(CELL_IDENTIFIER, forIndexPath:index_path).tap do |cell|
-      cell.art = art
-      cell.favorite = Favorites.is_favorite? art
-    end
-  end
-
   def index_paths_for_art(art, this_data=nil)
     this_data = self.data if this_data.nil?
     art = art["art"] if art.is_a? Hash
@@ -143,19 +124,39 @@ class TextablesViewController < UICollectionViewController
     ips
   end
 
-  def numberOfSectionsInCollectionView(clv)
+  def numberOfSectionsInCollectionView(view)
     self.data.reject{|d| d['category'] == ""}.count || 0
   end
 
-  def collectionView(clv, viewForSupplementaryElementOfKind:kind, atIndexPath:path)
-    clv.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier:HEADER_IDENTIFIER, forIndexPath:path).tap do |header|
-      header.display_string = self.data[path.section]["category"] || ""
+  def collectionView(view, numberOfItemsInSection: section)
+    self.data[section]["items"].reject{|i| i['name'] == "" }.count || 0
+  end
+
+  def collectionView(view, cellForItemAtIndexPath: index_path)
+    view.dequeueReusableCellWithReuseIdentifier(COLLECTION_CELL_ID, forIndexPath: index_path).tap do |cell|
+      rmq.build(cell) unless cell.reused
+
+      art = {
+        art: self.data[index_path.section]["items"][index_path.row]["art"],
+        name: self.data[index_path.section]["items"][index_path.row]["name"]
+      }
+      cell.art = art
+      cell.favorite = Favorites.is_favorite? art
     end
   end
 
-  def collectionView(collectionView, didSelectItemAtIndexPath:indexPath)
-    selected = self.data[indexPath.section]["items"][indexPath.row]
+  def collectionView(view, didSelectItemAtIndexPath: index_path)
+    # cell = view.cellForItemAtIndexPath(index_path)
+    puts "Selected at section: #{index_path.section}, row: #{index_path.row}"
+
+    selected = self.data[index_path.section]["items"][index_path.row]
     show_prompt selected
+  end
+
+  def collectionView(clv, viewForSupplementaryElementOfKind:kind, atIndexPath:path)
+    clv.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier:COLLECTION_HEADER_ID, forIndexPath:path).tap do |header|
+      header.display_string = self.data[path.section]["category"] || ""
+    end
   end
 
   def show_prompt selected, can_favorite = true

@@ -26,13 +26,13 @@ class AppDelegate
     # Set the initial value to remind people. This must be turned off manually.
     App::Persistence['show_notifications'] = true if App::Persistence['show_notifications'].nil?
 
-    self.view_controller = TextablesViewController.alloc.initWithCollectionViewLayout(UICollectionViewFlowLayout.new)
+    self.view_controller = TextablesViewController.new
     nav_controller = UINavigationController.alloc.initWithRootViewController(self.view_controller)
 
     self.window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     self.window.rootViewController = nav_controller
     self.window.makeKeyAndVisible
-    self.window.tintColor = "#00CC99".to_color
+    self.window.tintColor = '#00CC99'.to_color
 
     Appirater.appLaunched(true) unless Device.simulator?
 

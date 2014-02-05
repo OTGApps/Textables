@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/MohawkApps/rmq.git
+  revision: 286c67885b7be3b7b0b88ecf4df0ef37f7f4ee1f
+  branch: textables
+  specs:
+    ruby_motion_query (0.5.1)
+
+GIT
   remote: git://github.com/hboon/motion-testflight.git
   revision: bb40de7f7c44d246c7c63927a048dd33b0607e68
   branch: takeoff-on-launch-only
@@ -85,3 +92,4 @@ DEPENDENCIES
   motion-takeoff
   motion-testflight!
   rake (>= 0.9.4)
+  ruby_motion_query!
