@@ -15,7 +15,7 @@ class TextablesStylesheet < ApplicationStylesheet
     st.view.collectionViewLayout.tap do |cl|
       cl.itemSize = [cell_size[:w], cell_size[:h]]
       cl.scrollDirection = UICollectionViewScrollDirectionVertical
-      cl.headerReferenceSize = [cell_size[:w], cell_size[:h]]
+      cl.headerReferenceSize = [10.0, 30.0]
       cl.sectionInset = [10,10,10,10]
     end
   end
