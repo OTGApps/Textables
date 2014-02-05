@@ -67,7 +67,7 @@ class AboutViewController < Formotion::FormController
         }, {
           title: "Visit MohawkApps.com",
           type: :web_link,
-          warn: false,
+          warn: true,
           value: "http://www.mohawkapps.com"
         }, {
           title: "Made with ♥ in North Carolina",
