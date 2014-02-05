@@ -34,12 +34,4 @@ describe "ArtCell" do
     @cell.art.should == a
   end
 
-  it "should set a favorite" do
-    @cell.favorite?.should == nil
-    @cell.favorite = true
-    @cell.favorite?.should == true
-    @cell.favorite = false
-    @cell.favorite?.should == false
-  end
-
 end

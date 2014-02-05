@@ -1,0 +1,13 @@
+AllCops:
+  Includes:
+    - Rakefile
+  Excludes:
+    - _**
+    - resources/**
+    - vendor/**
+    - build/**
+    - spec/**
+Documentation:
+  Enabled: false
+MethodLength:
+  Max: 75
