@@ -52,13 +52,13 @@ class TextablesViewController < UICollectionViewController
     ap "Fetching new data from the server" if BW.debug?
 
     old_count = TextablesData.sharedData.textables_count
-    TextablesAPI.textify do |text, error|
-      ap "error: #{error}, text: #{text}" if BW.debug?
+    TextablesAPI.textify do |json, error|
+      ap "error: #{error}, json: #{json}" if BW.debug?
 
-      if error.nil? && text[0] == "["
+      if error.nil? && json[0] == "["
         ap "Saving Data file to filesystem." if BW.debug?
 
-        File.open(TextablesData.sharedData.documents, 'w') { |file| file.write(text) }
+        File.open(TextablesData.sharedData.documents, 'w') { |file| file.write(json) }
         App::Persistence['last_checked_texties'] = Time.now.to_i
         TextablesData.sharedData.cleanup
         new_count = TextablesData.sharedData.textables_count
