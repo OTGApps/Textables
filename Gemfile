@@ -9,7 +9,7 @@ gem 'bubble-wrap', :github => 'rubymotion/BubbleWrap', :require => ['bubble-wrap
 gem 'formotion', :github => 'markrickert/formotion', :branch => 'texties'
 gem 'motion-takeoff'
 gem 'motion-blitz' # Wrapper gem for SVProgressHUD
-gem 'ruby_motion_query', :github => 'MohawkApps/rmq', :branch => 'textables'
+gem 'ruby_motion_query'
 # gem 'ruby_motion_query', path: '../rmq'
 
 # Rubygems
