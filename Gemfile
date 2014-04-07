@@ -6,7 +6,7 @@ gem 'cocoapods'
 
 # RubyMotion
 gem 'bubble-wrap', :github => 'rubymotion/BubbleWrap', :require => ['bubble-wrap/core', 'bubble-wrap/mail', 'bubble-wrap/http']
-gem 'formotion', :github => 'markrickert/formotion', :branch => 'texties'
+gem 'formotion', :github => 'clayallsopp/formotion', :branch => 'master'
 gem 'motion-takeoff'
 gem 'motion-blitz' # Wrapper gem for SVProgressHUD
 gem 'ruby_motion_query'
