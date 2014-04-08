@@ -16,6 +16,10 @@ Stay tuned! We'll be adding more Textables to the library over time!
 
 This app is open source. Browse the source code here: https://github.com/MohawkApps/Textables/
 
+## Download from the App Store
+
+[![image](http://ax.phobos.apple.com.edgesuite.net/images/web/linkmaker/badge_appstore-lrg.gif)](https://itunes.apple.com/us/app/textables-unicode-ascii-art/id769404785?mt=8&uo=4&at=10l4yY&ct=github)
+
 ## How to run the app:
 
 1. You must have a valid license of RubyMotion.
