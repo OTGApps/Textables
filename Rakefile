@@ -12,15 +12,11 @@ Motion::Project::App.setup do |app|
   app.device_family = [:iphone]
   app.interface_orientations = [:portrait, :portrait_upside_down]
   app.identifier = 'com.mohawkapps.texties'
-  app.seed_id = 'DW9QQZR4ZL'
-  app.version = '6'
-  app.short_version = '1.1.2'
+  app.version = '7'
+  app.short_version = '1.1.3'
   app.icons = Dir.glob("resources/Icon*.png").map{|icon| icon.split("/").last}
   app.prerendered_icon = true
   app.info_plist['APP_STORE_ID'] = 769404785
-  app.entitlements['keychain-access-groups'] = [
-    app.seed_id + '.' + app.identifier
-  ]
 
   # app.archs['iPhoneOS'] << 'arm64'
   # app.archs['iPhoneSimulator'] << 'x86_64'
@@ -33,9 +29,14 @@ Motion::Project::App.setup do |app|
   end
 
   app.development do
+    app.seed_id = '7N372VT8HB'
+    app.identifier = app.seed_id + '.' + app.identifier
+    app.entitlements['keychain-access-groups'] = [
+      app.identifier
+    ]
     app.entitlements['get-task-allow'] = true
     app.codesign_certificate = "iPhone Developer: Mark Rickert (YA2VZGDX4S)"
-    app.provisioning_profile = "./provisioning/TextablesDevelopment.mobileprovision"
+    app.provisioning_profile = "../Provisioning/WildcardDevelopment.mobileprovision"
   end
 
   app.release do
