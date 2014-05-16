@@ -1,5 +1,5 @@
 # Textables [![Build Status](https://travis-ci.org/MohawkApps/Textables.png?branch=master)](https://travis-ci.org/MohawkApps/Textables) [![Code Climate](https://codeclimate.com/github/MohawkApps/Textables.png)](https://codeclimate.com/github/MohawkApps/Textables)
-![App Icon](https://raw.github.com/MohawkApps/Textables/master/resources/Icon-120.png)
+![App Icon](resources/Icon-120.png)
 
 #### A [RubyMotion](http://www.rubymotion.com/) application brought to you by [Mohawk Apps](http://www.mohawkapps.com/).
 
@@ -16,6 +16,10 @@ Stay tuned! We'll be adding more Textables to the library over time!
 
 This app is open source. Browse the source code here: https://github.com/MohawkApps/Textables/
 
+## Download from the App Store
+
+[![image](http://ax.phobos.apple.com.edgesuite.net/images/web/linkmaker/badge_appstore-lrg.gif)](https://itunes.apple.com/us/app/textables-unicode-ascii-art/id769404785?mt=8&uo=4&at=10l4yY&ct=github)
+
 ## How to run the app:
 
 1. You must have a valid license of RubyMotion.
@@ -28,7 +32,7 @@ This app is open source. Browse the source code here: https://github.com/MohawkA
 
 ## Screenshots
 
-<a href="https://raw.github.com/MohawkApps/Textables/master/_marketing/screenshots/1.1.0/iPhone4/1.png"><img src="https://raw.github.com/MohawkApps/Textables/master/_marketing/screenshots/1.1.0/iPhone4/1.png" alt="Screenshot" width="140" /></a> <a href="https://raw.github.com/MohawkApps/Textables/master/_marketing/screenshots/1.1.0/iPhone4/2.png"><img src="https://raw.github.com/MohawkApps/Textables/master/_marketing/screenshots/1.1.0/iPhone4/2.png" alt="Screenshot" width="140" /></a> <a href="https://raw.github.com/MohawkApps/Textables/master/_marketing/screenshots/1.1.0/iPhone4/3.png"><img src="https://raw.github.com/MohawkApps/Textables/master/_marketing/screenshots/1.1.0/iPhone4/3.png" alt="Screenshot" width="140" /></a> <a href="https://raw.github.com/MohawkApps/Textables/master/_marketing/screenshots/1.1.0/iPhone4/4.png"><img src="https://raw.github.com/MohawkApps/Textables/master/_marketing/screenshots/1.1.0/iPhone4/4.png" alt="Screenshot" width="140"  /></a> <a href="https://raw.github.com/MohawkApps/Textables/master/_marketing/screenshots/1.1.0/iPhone4/5.png"><img src="https://raw.github.com/MohawkApps/Textables/master/_marketing/screenshots/1.1.0/iPhone4/5.png" alt="Screenshot" width="140" /></a>
+<a href="_marketing/screenshots/1.1.0/iPhone4/1.png"><img src="_marketing/screenshots/1.1.0/iPhone4/1.png" alt="Screenshot" width="140" /></a> <a href="_marketing/screenshots/1.1.0/iPhone4/2.png"><img src="_marketing/screenshots/1.1.0/iPhone4/2.png" alt="Screenshot" width="140" /></a> <a href="_marketing/screenshots/1.1.0/iPhone4/3.png"><img src="_marketing/screenshots/1.1.0/iPhone4/3.png" alt="Screenshot" width="140" /></a> <a href="_marketing/screenshots/1.1.0/iPhone4/4.png"><img src="_marketing/screenshots/1.1.0/iPhone4/4.png" alt="Screenshot" width="140"  /></a> <a href="_marketing/screenshots/1.1.0/iPhone4/5.png"><img src="_marketing/screenshots/1.1.0/iPhone4/5.png" alt="Screenshot" width="140" /></a>
 
 ## Contributing:
 
@@ -37,6 +41,3 @@ This app is open source. Browse the source code here: https://github.com/MohawkA
 3. Send me a pull request.
 
 *I also like it when people who can't contribute [open an issue](https://github.com/MohawkApps/Textables/issues)*
-
----
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/MohawkApps/Textables/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
