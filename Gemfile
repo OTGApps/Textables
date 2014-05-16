@@ -15,8 +15,5 @@ gem 'ruby_motion_query'
 # Rubygems
 gem 'rake', '>= 0.9.4'
 
-# Testflight
-gem 'motion-testflight', :github => 'hboon/motion-testflight', :branch => 'takeoff-on-launch-only'
-
 # Development
 gem 'awesome_print_motion'

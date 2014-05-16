@@ -30,12 +30,7 @@ Motion::Project::App.setup do |app|
     pod 'FlurrySDK'
     pod 'Appirater'
     pod 'Harpy'
-    pod 'TestFlightSDK'
   end
-
-  app.testflight.api_token = 'b2a3667268f446b35c4ab473259912c9_MTUwNjI'
-  app.testflight.team_token = '2cf18a21ce6f6ccef94c49811c719285_MzA5NjUwMjAxMy0xMi0wNSAxODowMDoxMy4yODE0NzE'
-  app.testflight.app_token = 'd1890325-9003-4dc9-a5ae-2cfa868e833f'
 
   app.development do
     app.entitlements['get-task-allow'] = true
