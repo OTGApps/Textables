@@ -2,10 +2,9 @@ class TextablesData
 
   def self.excluded_services
     [
-      UIActivityTypeAddToReadingList,
-      UIActivityTypeAirDrop,
-      UIActivityTypeCopyToPasteboard,
-      UIActivityTypePrint
+      :add_to_reading_list,
+      :air_drop,
+      :print
     ]
   end
 
@@ -32,7 +31,7 @@ class TextablesData
     else
       ap 'using documents'
     end
-    
+
     use_default? ? resources : documents
   end
 
