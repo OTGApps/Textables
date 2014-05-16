@@ -49,14 +49,12 @@ class TextablesViewController < UICollectionViewController
 
   def fetch_data
     # Fetch and save the data locally.
-    ap "Fetching new data from the server" if BW.debug?
+    ap "Fetching new data from the server"
 
     old_count = TextablesData.sharedData.textables_count
     TextablesAPI.textify do |json, error|
-      ap "error: #{error}, json: #{json}" if BW.debug?
-
       if error.nil? && json[0] == "["
-        ap "Saving Data file to filesystem." if BW.debug?
+        ap "Saving Data file to filesystem."
 
         File.open(TextablesData.sharedData.documents, 'w') { |file| file.write(json) }
         App::Persistence['last_checked_texties'] = Time.now.to_i
@@ -111,12 +109,12 @@ class TextablesViewController < UICollectionViewController
     this_data = self.data if this_data.nil?
     art = art["art"] if art.is_a? Hash
 
-    ap "Finding paths of art: #{art}" if BW.debug?
+    ap "Finding paths of art: #{art}"
     ips = []
     this_data.each_with_index do |section, s_idx|
       section["items"].each_with_index do |item, idx|
         if item["art"] == art
-          ap "found: #{item['art']} at [#{idx},#{s_idx}]" if BW.debug?
+          ap "found: #{item['art']} at [#{idx},#{s_idx}]"
           ips << NSIndexPath.indexPathForRow(idx, inSection:s_idx)
         end
       end
@@ -220,7 +218,7 @@ class TextablesViewController < UICollectionViewController
   end
 
   def toggle_favorite art
-    ap "Toggling favorite for #{art}" if BW.debug?
+    ap "Toggling favorite for #{art}"
     adding = Favorites.is_favorite? art
 
     old_count = Favorites.count
@@ -279,7 +277,7 @@ class TextablesViewController < UICollectionViewController
     #   items: selected,
     #   excluded: TextablesData.excluded_services
     # ) do |activity_type, completed|
-    #   ap "Completed dialog - activity: #{activity_type} - finished flag: #{completed}" if BW.debug?
+    #   ap "Completed dialog - activity: #{activity_type} - finished flag: #{completed}"
     # end
 
   end
