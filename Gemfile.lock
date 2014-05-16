@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/clayallsopp/formotion.git
-  revision: b2f9edf443e5cef35973c634119cef3561e59b07
+  revision: 98e61c77171c11619c32ab23e6d573d804029066
   branch: master
   specs:
     formotion (1.7)
@@ -8,63 +8,61 @@ GIT
       motion-require (>= 0.1.0)
 
 GIT
-  remote: git://github.com/hboon/motion-testflight.git
-  revision: bb40de7f7c44d246c7c63927a048dd33b0607e68
-  branch: takeoff-on-launch-only
-  specs:
-    motion-testflight (1.5)
-
-GIT
   remote: git://github.com/rubymotion/BubbleWrap.git
-  revision: a93915a08899b585f6035b35748bf5ed9a315577
+  revision: 55f92007f4fd59eff0c657ddd912feb6fec2eae1
   specs:
-    bubble-wrap (1.5.0)
+    bubble-wrap (1.6.0)
+      bubble-wrap-http (= 1.6.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (3.2.17)
+    activesupport (3.2.18)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
+    afmotion (2.1.4)
+      motion-cocoapods (~> 1.4.0)
+      motion-require (>= 0.1)
     awesome_print_motion (0.1.0)
+    bubble-wrap-http (1.6.0)
     claide (0.5.0)
-    cocoapods (0.31.1)
+    cocoapods (0.32.1)
       activesupport (>= 3.2.15, < 4)
       claide (~> 0.5.0)
-      cocoapods-core (= 0.31.1)
-      cocoapods-downloader (~> 0.4.1)
+      cocoapods-core (= 0.32.1)
+      cocoapods-downloader (~> 0.5.0)
       cocoapods-try (~> 0.2.0)
       colored (~> 1.2)
       escape (~> 0.0.4)
       json_pure (~> 1.8)
-      nap (~> 0.5)
+      nap (~> 0.7)
       open4 (~> 1.3)
-      xcodeproj (~> 0.16.0)
-    cocoapods-core (0.31.1)
+      xcodeproj (~> 0.16.1)
+    cocoapods-core (0.32.1)
       activesupport (>= 3.2.15, < 4)
       fuzzy_match (~> 2.0.4)
       json_pure (~> 1.8)
       nap (~> 0.5)
-    cocoapods-downloader (0.4.1)
+    cocoapods-downloader (0.5.0)
     cocoapods-try (0.2.0)
     colored (1.2)
     escape (0.0.4)
     fuzzy_match (2.0.4)
     i18n (0.6.9)
     json_pure (1.8.1)
-    motion-blitz (1.0.1)
+    motion-blitz (1.0.2)
       motion-cocoapods (>= 1.4.0)
-    motion-cocoapods (1.4.0)
-      cocoapods (>= 0.26.2)
+    motion-cocoapods (1.4.2)
+      cocoapods (>= 0.32.1)
     motion-require (0.2.0)
     motion-takeoff (0.0.5)
       bubble-wrap (> 1.0.0)
-    multi_json (1.9.2)
+    multi_json (1.10.0)
     nap (0.7.0)
-    open4 (1.3.3)
-    rake (10.2.2)
-    ruby_motion_query (0.5.6)
-    xcodeproj (0.16.0)
+    open4 (1.3.4)
+    rake (10.3.2)
+    ruby_motion_query (0.5.7)
+    xcodeproj (0.16.1)
       activesupport (~> 3.0)
       colored (~> 1.2)
 
@@ -72,6 +70,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  afmotion (~> 2.1.0)
   awesome_print_motion
   bubble-wrap!
   cocoapods
@@ -79,6 +78,5 @@ DEPENDENCIES
   motion-blitz
   motion-cocoapods
   motion-takeoff
-  motion-testflight!
   rake (>= 0.9.4)
   ruby_motion_query

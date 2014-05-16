@@ -36,7 +36,6 @@ Motion::Project::App.setup do |app|
     app.entitlements['get-task-allow'] = true
     app.codesign_certificate = "iPhone Developer: Mark Rickert (YA2VZGDX4S)"
     app.provisioning_profile = "./provisioning/TextablesDevelopment.mobileprovision"
-    app.testflight.identify_testers = true
   end
 
   app.release do
@@ -44,6 +43,5 @@ Motion::Project::App.setup do |app|
     app.entitlements['get-task-allow'] = false
     app.codesign_certificate = "iPhone Distribution: Mohawk Apps, LLC (DW9QQZR4ZL)"
     app.provisioning_profile = "./provisioning/TextablesDistribution.mobileprovision"
-    app.testflight.identify_testers = false
   end
 end
