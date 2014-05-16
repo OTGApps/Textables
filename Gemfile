@@ -5,7 +5,7 @@ gem 'motion-cocoapods'
 gem 'cocoapods'
 
 # RubyMotion
-gem 'bubble-wrap', :github => 'rubymotion/BubbleWrap', :require => ['bubble-wrap/core', 'bubble-wrap/mail', 'bubble-wrap/http']
+gem 'bubble-wrap', :github => 'rubymotion/BubbleWrap', :require => ['bubble-wrap/core', 'bubble-wrap/mail']
 gem 'afmotion', '~> 2.1.0'
 gem 'formotion', :github => 'clayallsopp/formotion', :branch => 'master'
 gem 'motion-takeoff' # My gem for reminders and notifications
@@ -17,4 +17,4 @@ gem 'ruby_motion_query'
 gem 'rake', '>= 0.9.4'
 
 # Development
-gem 'awesome_print_motion'
+gem 'awesome_print_motion', github: 'MohawkApps/awesome_print_motion', branch: 'bubblewrap-debug'
