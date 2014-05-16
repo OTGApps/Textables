@@ -37,48 +37,28 @@ class TextablesViewController < UICollectionViewController
     self.navigationItem.leftBarButtonItem = crazy_letters_button
   end
 
-  def viewWillAppear animated
+  def viewWillAppear(animated)
     super
-    init_data
-  end
+    reload_data
 
-  def viewDidAppear animated
-    super
-    fetch_data if TextablesData.needs_textification?
-  end
-
-  def fetch_data
-    # Fetch and save the data locally.
-    ap "Fetching new data from the server"
-
-    old_count = TextablesData.sharedData.textables_count
-    TextablesAPI.textify do |json, error|
-      if error.nil? && json[0] == "["
-        ap "Saving Data file to filesystem."
-
-        File.open(TextablesData.sharedData.documents, 'w') { |file| file.write(json) }
-        App::Persistence['last_checked_texties'] = Time.now.to_i
-        TextablesData.sharedData.cleanup
-        new_count = TextablesData.sharedData.textables_count
-
-        Flurry.logEvent("API_HIT", withParameters:{old_count: old_count, new_count: new_count}) unless Device.simulator?
-        NSLog "Got valid result from #{App.name} server. Old:#{old_count} New:#{new_count}"
-        if new_count > old_count
-          NSLog "Got #{new_count - old_count} new texties."
-          App.alert("New #{App.name} added:", message: "We just added #{new_count - old_count} new #{App.name}!\nEnjoy!")
-        end
-
-        init_data
-      else
-        NSLog "Error retrieving data from the #{App.name} server."
-      end
+    @reload_observer = App.notification_center.observe 'ReloadTextablesNotification' do |notification|
+      reload_data
     end
   end
 
-  def init_data
+  def viewWillDisappear(animated)
+    App.notification_center.unobserve @reload_observer
+  end
+
+  def reload_data
     self.data = TextablesData.sharedData.json
     reload_favorites
     self.collectionView.reloadData
+  end
+
+  def viewDidAppear(animated)
+    super
+    TextablesAPI.textify if TextablesData.needs_textification?
   end
 
   def show_about

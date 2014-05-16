@@ -27,6 +27,12 @@ class TextablesData
   end
 
   def location
+    if use_default?
+      ap 'using resources'
+    else
+      ap 'using documents'
+    end
+    
     use_default? ? resources : documents
   end
 

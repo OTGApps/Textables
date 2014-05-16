@@ -11,7 +11,6 @@ gem 'formotion', :github => 'clayallsopp/formotion', :branch => 'master'
 gem 'motion-takeoff' # My gem for reminders and notifications
 gem 'motion-blitz' # Wrapper gem for SVProgressHUD
 gem 'ruby_motion_query'
-# gem 'ruby_motion_query', path: '../rmq'
 
 # Rubygems
 gem 'rake', '>= 0.9.4'

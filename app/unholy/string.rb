@@ -1,5 +1,33 @@
 class String
 
+  # Shamelessly stolen from Sugarcube
+  def document_path
+    @@textables_docs ||= NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true)[0]
+    return self if self.hasPrefix(@@textables_docs)
+
+    @@textables_docs.stringByAppendingPathComponent(self)
+  end
+
+  # Shamelessly stolen from Sugarcube
+  def resource_path
+    @@textables_resources ||= NSBundle.mainBundle.resourcePath
+    return self if self.hasPrefix(@@textables_resources)
+
+    @@textables_resources.stringByAppendingPathComponent(self)
+  end
+
+  def file_exists?
+    path = self.hasPrefix('/') ? self : self.document_path
+    NSFileManager.defaultManager.fileExistsAtPath(path)
+  end
+
+  def remove_file!
+    ptr = Pointer.new(:id)
+    path = self.hasPrefix('/') ? self : self.document_path
+    NSFileManager.defaultManager.removeItemAtPath(path, error:ptr)
+    ptr[0]
+  end
+
   def upside_down
     char_table = {
       'a' => 'ɐ',
