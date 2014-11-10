@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/MohawkApps/awesome_print_motion.git
-  revision: c1f519ce93e5ee6dbdee39663516f4b4fb1fa2b4
-  branch: bubblewrap-debug
-  specs:
-    awesome_print_motion (0.1.0)
-
-GIT
   remote: git://github.com/clayallsopp/formotion.git
   revision: 98e61c77171c11619c32ab23e6d573d804029066
   branch: master
@@ -30,6 +23,7 @@ GEM
     afmotion (2.1.4)
       motion-cocoapods (~> 1.4.0)
       motion-require (>= 0.1)
+    awesome_print_motion (0.1.0)
     bubble-wrap-http (1.6.0)
     claide (0.5.0)
     cocoapods (0.32.1)
@@ -77,7 +71,7 @@ PLATFORMS
 
 DEPENDENCIES
   afmotion (~> 2.1.0)
-  awesome_print_motion!
+  awesome_print_motion
   bubble-wrap!
   cocoapods
   formotion!
