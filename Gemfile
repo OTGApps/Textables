@@ -16,4 +16,4 @@ gem 'ruby_motion_query'
 gem 'rake', '>= 0.9.4'
 
 # Development
-gem 'awesome_print_motion'
+gem 'motion_print'

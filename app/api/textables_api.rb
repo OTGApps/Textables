@@ -2,11 +2,13 @@ class TextablesAPI
   API_URL = "https://raw.github.com/MohawkApps/Textables/master/resources/content.json"
 
   def self.textify
-    ap "Getting textables from github."
+    mp "Getting textables from github."
 
     AFMotion::HTTP.get(API_URL, q: Time.now.to_i) do |result|
       if result.success?
         old_count = TextablesData.sharedData.textables_count
+
+        mp result.body
 
         # Save it to the filesystem
         path_name = 'content.json'

@@ -25,6 +25,7 @@ class AppDelegate
 
     # Set the initial value to remind people. This must be turned off manually.
     App::Persistence['show_notifications'] = true if App::Persistence['show_notifications'].nil?
+    Takeoff::Reminders.setup
 
     self.view_controller = TextablesViewController.new
     nav_controller = UINavigationController.alloc.initWithRootViewController(self.view_controller)

@@ -1,35 +1,33 @@
 class TextablesData
 
-  def self.excluded_services
-    [
-      :add_to_reading_list,
-      :air_drop,
-      :print
-    ]
-  end
+  class << self
+    def excluded_services
+      [
+        :add_to_reading_list,
+        :air_drop,
+        :print
+      ]
+    end
 
-  def self.needs_textification?
-    # Don't check the server if the launch count is under 2
-    return false if App::Persistence['motion_takeoff_launch_count'] < 2 && !Device.simulator?
+    def needs_textification?
+      # Don't check the server if the launch count is under 2
+      return false if App::Persistence['motion_takeoff_launch_count'] < 2 && !Device.simulator?
 
-    time = (Device.simulator?) ? 20.seconds.ago.to_i : 1.days.ago.to_i
-    App::Persistence['last_checked_texties'].nil? || time > App::Persistence['last_checked_texties']
-  end
+      time = (Device.simulator?) ? 20.seconds.ago.to_i : 1.days.ago.to_i
+      App::Persistence['last_checked_texties'].nil? || time > App::Persistence['last_checked_texties']
+    end
 
-  # def self.excluded_services
-  #   [:add_to_reading_list, :air_drop, :copy_to_pasteboard,:print]
-  # end
-
-  def self.sharedData
-    Dispatch.once { @instance ||= new }
-    @instance
+    def sharedData
+      Dispatch.once { @instance ||= new }
+      @instance
+    end
   end
 
   def location
     if use_default?
-      ap 'using resources'
+      mp 'using resources'
     else
-      ap 'using documents'
+      mp 'using documents'
     end
 
     use_default? ? resources : documents

@@ -89,12 +89,12 @@ class TextablesViewController < UICollectionViewController
     this_data = self.data if this_data.nil?
     art = art["art"] if art.is_a? Hash
 
-    ap "Finding paths of art: #{art}"
+    mp "Finding paths of art: #{art}"
     ips = []
     this_data.each_with_index do |section, s_idx|
       section["items"].each_with_index do |item, idx|
         if item["art"] == art
-          ap "found: #{item['art']} at [#{idx},#{s_idx}]"
+          mp "found: #{item['art']} at [#{idx},#{s_idx}]"
           ips << NSIndexPath.indexPathForRow(idx, inSection:s_idx)
         end
       end
@@ -198,7 +198,7 @@ class TextablesViewController < UICollectionViewController
   end
 
   def toggle_favorite art
-    ap "Toggling favorite for #{art}"
+    mp "Toggling favorite for #{art}"
     adding = Favorites.is_favorite? art
 
     old_count = Favorites.count
@@ -249,7 +249,7 @@ class TextablesViewController < UICollectionViewController
       items: selected,
       excluded: TextablesData.excluded_services
     ) do |activity_type, completed|
-      ap "Completed dialog - activity: #{activity_type} - finished flag: #{completed}"
+      mp "Completed dialog - activity: #{activity_type} - finished flag: #{completed}"
     end
 
   end
