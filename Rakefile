@@ -33,7 +33,6 @@ Motion::Project::App.setup do |app|
     pod 'UIActionSheet+Blocks'
     pod 'FlurrySDK'
     pod 'Appirater'
-    pod 'Harpy'
   end
 
   app.development do

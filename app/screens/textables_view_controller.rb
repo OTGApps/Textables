@@ -63,7 +63,7 @@ class TextablesViewController < UICollectionViewController
 
   def show_about
     Flurry.logEvent("SHOW_ABOUT") unless Device.simulator?
-    about_vc = AboutViewController.alloc.init
+    about_vc = AboutScreen.new
     nav_controller = UINavigationController.alloc.initWithRootViewController(about_vc)
     self.presentViewController(nav_controller, animated:true, completion:nil)
   end
