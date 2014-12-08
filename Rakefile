@@ -1,16 +1,22 @@
 # -*- coding: utf-8 -*-
 $:.unshift("/Library/RubyMotion/lib")
 require 'motion/project/template/ios'
-require "rubygems"
-require 'bundler'
-Bundler.require
+
+begin
+  require 'bundler'
+  require 'sugarcube-nsdate'
+  require 'sugarcube-numbers'
+  require 'sugarcube-files'
+  Bundler.require
+rescue LoadError
+end
 
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'Textables'
 
   app.version = (`git rev-list HEAD --count`.strip.to_i).to_s
-  app.short_version = '1.1.3'
+  app.short_version = '1.1.4'
 
   app.sdk_version = "8.1"
   app.deployment_target = "7.1"
