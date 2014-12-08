@@ -19,7 +19,7 @@ class AboutViewController < Formotion::FormController
           image: "share",
           value: {
             items: "I'm using the #{App.name} app to send cool text art. Check it out! http://www.mohawkapps.com/app/textables/",
-            excluded: TextablesData.excluded_services
+            excluded: TextableData.excluded_services
           }
         },{
           title: "Rate #{App.name} on iTunes",

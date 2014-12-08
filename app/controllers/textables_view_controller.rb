@@ -51,14 +51,14 @@ class TextablesViewController < UICollectionViewController
   end
 
   def reload_data
-    self.data = TextablesData.sharedData.json
+    self.data = TextableData.shared.hash
     reload_favorites
     self.collectionView.reloadData
   end
 
   def viewDidAppear(animated)
     super
-    TextablesAPI.textify if TextablesData.needs_textification?
+    TextableData.shared.download_data
   end
 
   def show_about
@@ -247,7 +247,7 @@ class TextablesViewController < UICollectionViewController
 
     activity_vc = BW::UIActivityViewController.new(
       items: selected,
-      excluded: TextablesData.excluded_services
+      excluded: TextableData.excluded_services
     ) do |activity_type, completed|
       mp "Completed dialog - activity: #{activity_type} - finished flag: #{completed}"
     end
