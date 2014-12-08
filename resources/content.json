@@ -291,6 +291,10 @@
       {
         "name": "David Bowie",
         "art": "(･.◤)"
+      },
+      {
+        "name": "Flying Spaghetti Monster",
+        "art": "~;;o; ° ° ;;o;~"
       }
     ]
   },
@@ -365,6 +369,10 @@
       {
         "name": "Boxing Champion",
         "art":  "ᕦ(ò_ó*)ᕤ"
+      },
+      {
+        "name": "Happy-Go-Lucky",
+        "art": "ᕕ( ᐛ )ᕗ"
       }
     ]
   },
@@ -426,6 +434,10 @@
       {
         "name": "Swimming Fish",
         "art":  "～～ >°))))))))><<"
+      },
+      {
+        "name": "Octopus",
+        "art":  "(_/\\_(O O)_/\\_)"
       }
     ]
   },
@@ -493,10 +505,6 @@
       {
         "name": "Rose",
         "art":  "@>--;--"
-      },
-      {
-        "name": "Tophat",
-        "art":  "┌─┐\n┴─┴"
       },
       {
         "name": "5 Bucks",
