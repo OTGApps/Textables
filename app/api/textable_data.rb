@@ -28,22 +28,24 @@ class TextableData
   end
 
   def should_download_data?
-    return false if App::Persistence['motion_takeoff_launch_count'] < 2 && !Device.simulator?
-
-    ((Device.simulator?) ? 20.seconds.ago.to_i : 1.days.ago.to_i) > download_age
+    if (App::Persistence['motion_takeoff_launch_count'].nil? || App::Persistence['motion_takeoff_launch_count'] < 2) && !Device.simulator?
+      false
+    else
+      ((Device.simulator?) ? 20.seconds.ago.to_i : 1.days.ago.to_i) > download_age
+    end
   end
 
   def download_data
     return if !should_download_data?
 
-    mp file_name.document_path
+    # mp file_name.document_path
 
-    mp "Trying to download data from github."
+    # mp "Trying to download data from github."
     AFMotion::HTTP.get(API_URL, q: Time.now.to_i) do |result|
       if result.success?
-        mp 'Got data from github.'
+        # mp 'Got data from github.'
         old_count = textables_count
-        mp "Old textables: #{old_count}"
+        # mp "Old textables: #{old_count}"
 
         # Save it to the filesystem
         file_name.document_path.remove_file! if downloaded_exists?
@@ -53,7 +55,7 @@ class TextableData
         cleanup
 
         new_count = textables_count
-        mp "New count: #{new_count}"
+        # mp "New count: #{new_count}"
 
         Flurry.logEvent("API_HIT", withParameters:{old_count: old_count, new_count: new_count}) unless Device.simulator?
 
