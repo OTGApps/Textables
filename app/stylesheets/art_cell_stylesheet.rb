@@ -1,6 +1,6 @@
 module ArtCellStylesheet
   def cell_size
-    { w: 145, h: 75 }
+    { w: (app_width / 2) - (padding * 3), h: 75 }
   end
 
   def padding
