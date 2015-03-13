@@ -14,7 +14,7 @@ If you love expressing yourself to your friends using more than words with Emoji
 
 Stay tuned! We'll be adding more Textables to the library over time!
 
-This app is open source. Browse the source code here: https://github.com/MohawkApps/Textables/
+This app is open source. Browse the source code here: https://github.com/OTGapps/Textables
 
 ## Download from the App Store
 
@@ -40,4 +40,4 @@ This app is open source. Browse the source code here: https://github.com/MohawkA
 2. Work on a feature branch.
 3. Send me a pull request.
 
-*I also like it when people who can't contribute [open an issue](https://github.com/MohawkApps/Textables/issues)*
+*I also like it when people who can't contribute [open an issue](https://github.com/OTGapps/Textables/issues)*
