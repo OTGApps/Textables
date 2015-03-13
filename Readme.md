@@ -1,7 +1,7 @@
-# Textables [![Build Status](https://travis-ci.org/MohawkApps/Textables.png?branch=master)](https://travis-ci.org/MohawkApps/Textables) [![Code Climate](https://codeclimate.com/github/MohawkApps/Textables.png)](https://codeclimate.com/github/MohawkApps/Textables)
+# Textables [![Build Status](https://travis-ci.org/OTGApps/Textables.png?branch=master)](https://travis-ci.org/OTGApps/Textables) [![Code Climate](https://codeclimate.com/github/MohawkApps/Textables.png)](https://codeclimate.com/github/MohawkApps/Textables)
 ![App Icon](resources/Icon-120.png)
 
-#### A [RubyMotion](http://www.rubymotion.com/) application brought to you by [Mohawk Apps](http://www.mohawkapps.com/).
+#### A [RubyMotion](http://www.rubymotion.com/) application brought to you by [Off the Grid Apps](http://www.otgapps.io/).
 
 Textables is the fun new way to send Unicode and ASCII art to your friends! Explore a library of over 100 ASCII & Unicode artwork that you can send to your friends over SMS, iMessage, Email, Facebook, and Twitter!
 
@@ -14,7 +14,7 @@ If you love expressing yourself to your friends using more than words with Emoji
 
 Stay tuned! We'll be adding more Textables to the library over time!
 
-This app is open source. Browse the source code here: https://github.com/MohawkApps/Textables/
+This app is open source. Browse the source code here: https://github.com/OTGapps/Textables
 
 ## Download from the App Store
 
@@ -40,4 +40,4 @@ This app is open source. Browse the source code here: https://github.com/MohawkA
 2. Work on a feature branch.
 3. Send me a pull request.
 
-*I also like it when people who can't contribute [open an issue](https://github.com/MohawkApps/Textables/issues)*
+*I also like it when people who can't contribute [open an issue](https://github.com/OTGapps/Textables/issues)*
