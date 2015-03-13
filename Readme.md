@@ -1,7 +1,7 @@
-# Textables [![Build Status](https://travis-ci.org/MohawkApps/Textables.png?branch=master)](https://travis-ci.org/MohawkApps/Textables) [![Code Climate](https://codeclimate.com/github/MohawkApps/Textables.png)](https://codeclimate.com/github/MohawkApps/Textables)
+# Textables [![Build Status](https://travis-ci.org/OTGApps/Textables.png?branch=master)](https://travis-ci.org/OTGApps/Textables) [![Code Climate](https://codeclimate.com/github/MohawkApps/Textables.png)](https://codeclimate.com/github/MohawkApps/Textables)
 ![App Icon](resources/Icon-120.png)
 
-#### A [RubyMotion](http://www.rubymotion.com/) application brought to you by [Mohawk Apps](http://www.mohawkapps.com/).
+#### A [RubyMotion](http://www.rubymotion.com/) application brought to you by [Off the Grid Apps](http://www.otgapps.io/).
 
 Textables is the fun new way to send Unicode and ASCII art to your friends! Explore a library of over 100 ASCII & Unicode artwork that you can send to your friends over SMS, iMessage, Email, Facebook, and Twitter!
 
